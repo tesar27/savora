@@ -69,8 +69,9 @@ class CustomBottomNavBar extends StatelessWidget {
                               ? Padding(
                                   padding: const EdgeInsets.only(left: 4),
                                   child: ConstrainedBox(
-                                    constraints:
-                                        const BoxConstraints(maxWidth: 74),
+                                    constraints: const BoxConstraints(
+                                      maxWidth: 74,
+                                    ),
                                     child: Text(
                                       tab.label,
                                       overflow: TextOverflow.ellipsis,
