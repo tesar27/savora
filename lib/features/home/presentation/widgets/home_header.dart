@@ -16,25 +16,25 @@ class HomeHeader extends StatelessWidget {
           children: <Widget>[
             Text(
               cityName,
-              style: textTheme.headlineMedium?.copyWith(
-                fontSize: 52,
-                fontWeight: FontWeight.w800,
+              style: textTheme.titleLarge?.copyWith(
+                fontSize: 24,
+                fontWeight: FontWeight.w700,
                 color: const Color(0xFF171A24),
-                letterSpacing: -1.6,
+                letterSpacing: -0.4,
               ),
             ),
-            const SizedBox(width: 6),
-            const Icon(Icons.keyboard_arrow_down_rounded, size: 28),
+            const SizedBox(width: 4),
+            const Icon(Icons.keyboard_arrow_down_rounded, size: 22),
           ],
         ),
         SizedBox(
-          height: 42,
-          width: 42,
+          height: 40,
+          width: 40,
           child: IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.search_rounded, size: 32),
+            icon: const Icon(Icons.search_rounded, size: 28),
             padding: EdgeInsets.zero,
-            splashRadius: 22,
+            splashRadius: 20,
           ),
         ),
       ],
