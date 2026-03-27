@@ -12,10 +12,7 @@ class AppTheme {
       colorScheme: ColorScheme.fromSeed(
         seedColor: AppColors.accent,
         brightness: Brightness.light,
-      ).copyWith(
-        primary: AppColors.accent,
-        surface: AppColors.surface,
-      ),
+      ).copyWith(primary: AppColors.accent, surface: AppColors.surface),
       textTheme: const TextTheme(
         headlineMedium: TextStyle(
           fontSize: 36,
