@@ -1,123 +1,157 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/theme/app_colors.dart';
 import '../models/home_models.dart';
 
 class RecipeCard extends StatelessWidget {
-  const RecipeCard({
-    required this.recipe,
-    super.key,
-  });
+  const RecipeCard({required this.item, super.key});
 
-  final RecipeCardModel recipe;
+  final DealCardModel item;
 
   @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.surface,
-        borderRadius: BorderRadius.circular(24),
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Expanded(
+    return SizedBox(
+      width: 306,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          ClipRRect(
+            borderRadius: BorderRadius.circular(26),
+            child: SizedBox(
+              height: 188,
               child: Stack(
+                fit: StackFit.expand,
                 children: <Widget>[
-                  Positioned.fill(
-                    child: Image.network(
-                      recipe.imageUrl,
-                      fit: BoxFit.cover,
+                  Image.network(
+                    item.imageUrl,
+                    fit: BoxFit.cover,
+                    errorBuilder:
+                        (BuildContext context, Object error, StackTrace? stack) =>
+                            Container(
+                      color: const Color(0xFFECECEC),
+                      alignment: Alignment.center,
+                      child: const Icon(
+                        Icons.restaurant_rounded,
+                        size: 48,
+                        color: Color(0xFF9A9A9A),
+                      ),
                     ),
                   ),
-                  Positioned(
-                    top: 10,
-                    left: 10,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 9,
-                        vertical: 5,
-                      ),
-                      decoration: BoxDecoration(
-                        color: const Color(0xA0000000),
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                      child: Row(
-                        children: <Widget>[
-                          const Icon(
-                            Icons.schedule_rounded,
-                            size: 13,
-                            color: Colors.white,
+                  if (item.rank != null)
+                    Positioned(
+                      top: 10,
+                      left: 10,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 6,
+                        ),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFF7C75C),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Text(
+                          item.rank!,
+                          style: textTheme.bodyMedium?.copyWith(
+                            color: const Color(0xFF131313),
+                            fontWeight: FontWeight.w800,
                           ),
-                          const SizedBox(width: 4),
-                          Text(
-                            recipe.duration,
-                            style: textTheme.bodySmall?.copyWith(
+                        ),
+                      ),
+                    ),
+                  if (item.redeemedText != null)
+                    Positioned(
+                      top: 10,
+                      right: 10,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 6,
+                        ),
+                        decoration: BoxDecoration(
+                          color: const Color(0xB31A1A1A),
+                          borderRadius: BorderRadius.circular(18),
+                        ),
+                        child: Row(
+                          children: <Widget>[
+                            const Icon(
+                              Icons.local_fire_department_rounded,
+                              size: 14,
                               color: Colors.white,
-                              fontWeight: FontWeight.w600,
                             ),
-                          ),
-                        ],
+                            const SizedBox(width: 4),
+                            Text(
+                              item.redeemedText!,
+                              style: textTheme.bodyMedium?.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    right: 10,
-                    bottom: 10,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 5,
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppColors.accent,
-                        borderRadius: BorderRadius.circular(13),
-                      ),
-                      child: Row(
-                        children: <Widget>[
-                          const Icon(Icons.star, size: 14),
-                          const SizedBox(width: 4),
-                          Text(
-                            recipe.rating.toStringAsFixed(1),
-                            style: textTheme.bodySmall?.copyWith(
-                              color: AppColors.textPrimary,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 14),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    recipe.title,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: textTheme.bodyLarge?.copyWith(
-                      fontWeight: FontWeight.w700,
+          ),
+          const SizedBox(height: 12),
+          Text(
+            item.title,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: textTheme.titleMedium?.copyWith(
+              fontSize: 20,
+              fontWeight: FontWeight.w800,
+              color: const Color(0xFF1E2130),
+            ),
+          ),
+          const SizedBox(height: 4),
+          Row(
+            children: <Widget>[
+              const Icon(Icons.star_rounded, size: 20, color: Color(0xFF42D88A)),
+              const SizedBox(width: 4),
+              Expanded(
+                child: Text(
+                  '${item.rating.toStringAsFixed(1)} | ${item.distance} | ${item.subtitle}',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: textTheme.bodyLarge?.copyWith(
+                    color: const Color(0xFF6E6F7A),
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: item.tags
+                .map(
+                  (String tag) => Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 7,
+                    ),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF48DF8F),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Text(
+                      tag,
+                      style: textTheme.bodyMedium?.copyWith(
+                        color: const Color(0xFF0E2437),
+                        fontWeight: FontWeight.w800,
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 3),
-                  Text(
-                    recipe.cuisine,
-                    style: textTheme.bodyMedium,
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+                )
+                .toList(),
+          ),
+        ],
       ),
     );
   }

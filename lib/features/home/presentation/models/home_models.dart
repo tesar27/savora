@@ -1,27 +1,40 @@
 import 'package:flutter/material.dart';
 
 class HomeCategory {
-  const HomeCategory({
-    required this.icon,
-    required this.label,
-  });
+  const HomeCategory({required this.icon, required this.label});
 
   final IconData icon;
   final String label;
 }
 
-class RecipeCardModel {
-  const RecipeCardModel({
+class DealCardModel {
+  const DealCardModel({
     required this.imageUrl,
     required this.title,
-    required this.cuisine,
-    required this.duration,
+    required this.subtitle,
     required this.rating,
+    required this.distance,
+    required this.tags,
+    this.rank,
+    this.redeemedText,
   });
 
   final String imageUrl;
   final String title;
-  final String cuisine;
-  final String duration;
+  final String subtitle;
   final double rating;
+  final String distance;
+  final List<String> tags;
+  final String? rank;
+  final String? redeemedText;
+}
+
+class DealSectionModel {
+  const DealSectionModel({
+    required this.title,
+    required this.items,
+  });
+
+  final String title;
+  final List<DealCardModel> items;
 }

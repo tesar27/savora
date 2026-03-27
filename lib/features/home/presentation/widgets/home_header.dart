@@ -1,33 +1,40 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/theme/app_colors.dart';
-
 class HomeHeader extends StatelessWidget {
-  const HomeHeader({super.key});
+  const HomeHeader({required this.cityName, super.key});
+
+  final String cityName;
 
   @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        Text(
-          'Hello, Teresa!',
-          style: textTheme.bodyMedium,
-        ),
-        const SizedBox(height: 10),
-        RichText(
-          text: TextSpan(
-            style: textTheme.titleLarge?.copyWith(height: 1.25),
-            children: const <InlineSpan>[
-              TextSpan(text: 'Make your own food,\n'),
-              TextSpan(text: 'stay at '),
-              TextSpan(
-                text: 'home',
-                style: TextStyle(color: AppColors.accent),
+        Row(
+          children: <Widget>[
+            Text(
+              cityName,
+              style: textTheme.headlineMedium?.copyWith(
+                fontSize: 52,
+                fontWeight: FontWeight.w800,
+                color: const Color(0xFF171A24),
+                letterSpacing: -1.6,
               ),
-            ],
+            ),
+            const SizedBox(width: 6),
+            const Icon(Icons.keyboard_arrow_down_rounded, size: 28),
+          ],
+        ),
+        SizedBox(
+          height: 42,
+          width: 42,
+          child: IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.search_rounded, size: 32),
+            padding: EdgeInsets.zero,
+            splashRadius: 22,
           ),
         ),
       ],
