@@ -36,11 +36,10 @@ class ProfileMenuTile extends StatelessWidget {
             Expanded(
               child: Text(
                 title,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w800,
-                      color: const Color(0xFF171A24),
-                    ),
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  fontWeight: FontWeight.w800,
+                  color: const Color(0xFF171A24),
+                ),
               ),
             ),
             trailing ?? const Icon(Icons.chevron_right_rounded, size: 34),

@@ -59,11 +59,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         surfaceTintColor: Colors.transparent,
         title: Text(
           t.editProfile,
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontSize: 24,
-                fontWeight: FontWeight.w800,
-                color: const Color(0xFF161922),
-              ),
+          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+            fontWeight: FontWeight.w800,
+            color: const Color(0xFF161922),
+          ),
         ),
       ),
       body: ListView(
@@ -81,8 +80,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   child: avatarBytes == null
                       ? Text(
                           profile.initials,
-                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                fontSize: 32,
+                          style: Theme.of(context).textTheme.headlineSmall
+                              ?.copyWith(
                                 fontWeight: FontWeight.w800,
                                 color: const Color(0xFF156A35),
                               ),
@@ -135,10 +134,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             controller: _firstNameController,
           ),
           const SizedBox(height: 16),
-          ProfileFormField(
-            label: t.lastName,
-            controller: _lastNameController,
-          ),
+          ProfileFormField(label: t.lastName, controller: _lastNameController),
           const SizedBox(height: 16),
           ProfileFormField(
             label: t.emailAddress,
@@ -174,9 +170,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               },
               child: Text(
                 t.saveChanges,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      fontWeight: FontWeight.w800,
-                    ),
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w800),
               ),
             ),
           ),

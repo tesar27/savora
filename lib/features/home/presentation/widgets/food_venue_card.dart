@@ -110,8 +110,7 @@ class FoodVenueCard extends StatelessWidget {
             item.title,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: textTheme.titleMedium?.copyWith(
-              fontSize: 18,
+            style: textTheme.titleLarge?.copyWith(
               fontWeight: FontWeight.w800,
               color: const Color(0xFF1E2130),
             ),

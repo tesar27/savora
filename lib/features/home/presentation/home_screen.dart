@@ -289,9 +289,8 @@ class _HomeViewState extends State<_HomeView> {
                       children: <Widget>[
                         Text(
                           _localizedSectionTitle(t, section.title),
-                          style: textTheme.titleMedium?.copyWith(
-                            fontSize: 32,
-                            fontWeight: FontWeight.w800,
+                          style: textTheme.titleLarge?.copyWith(
+                            fontWeight: FontWeight.w700,
                             color: const Color(0xFF1C1F2D),
                           ),
                         ),

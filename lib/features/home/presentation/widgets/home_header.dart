@@ -16,8 +16,7 @@ class HomeHeader extends StatelessWidget {
           children: <Widget>[
             Text(
               cityName,
-              style: textTheme.titleLarge?.copyWith(
-                fontSize: 24,
+              style: textTheme.headlineSmall?.copyWith(
                 fontWeight: FontWeight.w700,
                 color: const Color(0xFF171A24),
                 letterSpacing: -0.4,

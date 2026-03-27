@@ -22,13 +22,21 @@ class ProfileScreen extends StatelessWidget {
     final List<({IconData icon, String value, String label})> stats =
         <({IconData icon, String value, String label})>[
           (icon: Icons.favorite_rounded, value: '2', label: t.favorites),
-          (icon: Icons.account_balance_wallet_rounded, value: '10 €', label: t.savings),
+          (
+            icon: Icons.account_balance_wallet_rounded,
+            value: '10 €',
+            label: t.savings,
+          ),
           (icon: Icons.local_offer_rounded, value: '1', label: t.deals),
           (icon: Icons.emoji_events_rounded, value: '0', label: t.level),
           (icon: Icons.storefront_rounded, value: '12', label: t.restaurants),
           (icon: Icons.location_city_rounded, value: '3', label: t.cities),
           (icon: Icons.star_rounded, value: '4.8', label: t.rating),
-          (icon: Icons.chat_bubble_outline_rounded, value: '7', label: t.reviews),
+          (
+            icon: Icons.chat_bubble_outline_rounded,
+            value: '7',
+            label: t.reviews,
+          ),
         ];
 
     return Scaffold(
@@ -38,11 +46,10 @@ class ProfileScreen extends StatelessWidget {
           children: <Widget>[
             Text(
               t.profileTitle,
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontSize: 36,
-                    fontWeight: FontWeight.w800,
-                    color: const Color(0xFF1C1F2D),
-                  ),
+              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                fontWeight: FontWeight.w800,
+                color: const Color(0xFF1C1F2D),
+              ),
             ),
             const SizedBox(height: 28),
             InkWell(
@@ -68,9 +75,8 @@ class ProfileScreen extends StatelessWidget {
                       child: profile.avatarBytes == null
                           ? Text(
                               profile.initials,
-                              style: Theme.of(context).textTheme.titleLarge
+                              style: Theme.of(context).textTheme.headlineSmall
                                   ?.copyWith(
-                                    fontSize: 30,
                                     fontWeight: FontWeight.w800,
                                     color: const Color(0xFF146734),
                                   ),
@@ -84,9 +90,8 @@ class ProfileScreen extends StatelessWidget {
                         children: <Widget>[
                           Text(
                             profile.displayName,
-                            style: Theme.of(context).textTheme.titleLarge
+                            style: Theme.of(context).textTheme.headlineSmall
                                 ?.copyWith(
-                                  fontSize: 28,
                                   fontWeight: FontWeight.w800,
                                   color: const Color(0xFF171A24),
                                 ),
@@ -96,7 +101,6 @@ class ProfileScreen extends StatelessWidget {
                             t.editProfileSubtitle,
                             style: Theme.of(context).textTheme.bodyLarge
                                 ?.copyWith(
-                                  fontSize: 16,
                                   color: const Color(0xFF5E6068),
                                   fontWeight: FontWeight.w500,
                                 ),

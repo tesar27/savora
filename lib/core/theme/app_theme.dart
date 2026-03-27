@@ -15,28 +15,39 @@ class AppTheme {
       ).copyWith(primary: AppColors.accent, surface: AppColors.surface),
       textTheme: const TextTheme(
         headlineMedium: TextStyle(
-          fontSize: 36,
+          fontSize: 28,
+          height: 1.2,
+          fontWeight: FontWeight.w700,
+          color: AppColors.textPrimary,
+        ),
+        headlineSmall: TextStyle(
+          fontSize: 24,
           height: 1.2,
           fontWeight: FontWeight.w700,
           color: AppColors.textPrimary,
         ),
         titleLarge: TextStyle(
-          fontSize: 34,
-          fontWeight: FontWeight.w700,
-          color: AppColors.textPrimary,
-        ),
-        titleMedium: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.w700,
           color: AppColors.textPrimary,
         ),
-        bodyLarge: TextStyle(
+        titleMedium: TextStyle(
           fontSize: 16,
+          fontWeight: FontWeight.w700,
+          color: AppColors.textPrimary,
+        ),
+        titleSmall: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w700,
+          color: AppColors.textPrimary,
+        ),
+        bodyLarge: TextStyle(
+          fontSize: 14,
           color: AppColors.textPrimary,
           fontWeight: FontWeight.w500,
         ),
         bodyMedium: TextStyle(
-          fontSize: 14,
+          fontSize: 13,
           color: AppColors.textSecondary,
           fontWeight: FontWeight.w500,
         ),
@@ -44,6 +55,16 @@ class AppTheme {
           fontSize: 12,
           color: AppColors.textSecondary,
           fontWeight: FontWeight.w500,
+        ),
+        labelLarge: TextStyle(
+          fontSize: 14,
+          color: AppColors.textPrimary,
+          fontWeight: FontWeight.w700,
+        ),
+        labelMedium: TextStyle(
+          fontSize: 12,
+          color: AppColors.textSecondary,
+          fontWeight: FontWeight.w600,
         ),
       ),
       inputDecorationTheme: const InputDecorationTheme(

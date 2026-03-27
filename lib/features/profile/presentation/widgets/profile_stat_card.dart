@@ -38,18 +38,17 @@ class ProfileStatCard extends StatelessWidget {
           Text(
             value,
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w800,
-                  color: const Color(0xFF171A24),
-                ),
+              fontWeight: FontWeight.w800,
+              color: const Color(0xFF171A24),
+            ),
           ),
           const SizedBox(height: 4),
           Text(
             label,
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: const Color(0xFF5F6168),
-                  fontWeight: FontWeight.w600,
-                ),
+              color: const Color(0xFF5F6168),
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ],
       ),

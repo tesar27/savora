@@ -37,11 +37,10 @@ class ProfilePromoBanner extends StatelessWidget {
                     constraints: const BoxConstraints(maxWidth: 260),
                     child: Text(
                       title,
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            fontSize: 26,
-                            fontWeight: FontWeight.w800,
-                            color: Colors.white,
-                          ),
+                      style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.w800,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                   const Spacer(),
@@ -57,9 +56,9 @@ class ProfilePromoBanner extends StatelessWidget {
                     child: Text(
                       buttonLabel,
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: const Color(0xFF0D1D1B),
-                            fontWeight: FontWeight.w800,
-                          ),
+                        color: const Color(0xFF0D1D1B),
+                        fontWeight: FontWeight.w800,
+                      ),
                     ),
                   ),
                 ],
