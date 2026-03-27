@@ -5,8 +5,8 @@ import '../../../../core/localization/app_localizations.dart';
 import '../../../../core/theme/app_colors.dart';
 import 'models/home_models.dart';
 import 'widgets/category_selector.dart';
+import 'widgets/food_venue_card.dart';
 import 'widgets/home_header.dart';
-import 'widgets/recipe_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -22,8 +22,8 @@ class HomeScreen extends StatelessWidget {
   static const List<DealSectionModel> _sections = <DealSectionModel>[
     DealSectionModel(
       title: 'Nearby',
-      items: <DealCardModel>[
-        DealCardModel(
+      items: <FoodVenueCardModel>[
+        FoodVenueCardModel(
           imageUrl:
               'https://images.pexels.com/photos/5938/food-salad-healthy-lunch.jpg?auto=compress&cs=tinysrgb&w=1200',
           title: 'Fino',
@@ -33,7 +33,7 @@ class HomeScreen extends StatelessWidget {
           redeemedText: '100+ redeemed',
           tags: <String>['2-for-1 cakes', '2-for-1 winery deal'],
         ),
-        DealCardModel(
+        FoodVenueCardModel(
           imageUrl:
               'https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&w=1200',
           title: 'Tama Bistro',
@@ -47,8 +47,8 @@ class HomeScreen extends StatelessWidget {
     ),
     DealSectionModel(
       title: 'Top 10 Highlights',
-      items: <DealCardModel>[
-        DealCardModel(
+      items: <FoodVenueCardModel>[
+        FoodVenueCardModel(
           imageUrl:
               'https://images.pexels.com/photos/2619967/pexels-photo-2619967.jpeg?auto=compress&cs=tinysrgb&w=1200',
           title: "L'Osteria Freiburg Ramparts",
@@ -59,7 +59,7 @@ class HomeScreen extends StatelessWidget {
           redeemedText: '3.8k+ redeemed',
           tags: <String>['2-for-1 pasta', '2-for-1 aperitif'],
         ),
-        DealCardModel(
+        FoodVenueCardModel(
           imageUrl:
               'https://images.pexels.com/photos/4958792/pexels-photo-4958792.jpeg?auto=compress&cs=tinysrgb&w=1200',
           title: 'Enchilada Freiburg',
@@ -74,8 +74,8 @@ class HomeScreen extends StatelessWidget {
     ),
     DealSectionModel(
       title: 'Trending',
-      items: <DealCardModel>[
-        DealCardModel(
+      items: <FoodVenueCardModel>[
+        FoodVenueCardModel(
           imageUrl:
               'https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1200',
           title: 'Golden Slice',
@@ -85,7 +85,7 @@ class HomeScreen extends StatelessWidget {
           redeemedText: '2k+ redeemed',
           tags: <String>['2-for-1 family pizza'],
         ),
-        DealCardModel(
+        FoodVenueCardModel(
           imageUrl:
               'https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg?auto=compress&cs=tinysrgb&w=1200',
           title: 'Urban Grill',
@@ -99,8 +99,8 @@ class HomeScreen extends StatelessWidget {
     ),
     DealSectionModel(
       title: 'Top Rated',
-      items: <DealCardModel>[
-        DealCardModel(
+      items: <FoodVenueCardModel>[
+        FoodVenueCardModel(
           imageUrl:
               'https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=1200',
           title: 'Rosso Trattoria',
@@ -110,7 +110,7 @@ class HomeScreen extends StatelessWidget {
           redeemedText: '1.1k+ redeemed',
           tags: <String>['2-for-1 tasting menu'],
         ),
-        DealCardModel(
+        FoodVenueCardModel(
           imageUrl:
               'https://images.pexels.com/photos/2233729/pexels-photo-2233729.jpeg?auto=compress&cs=tinysrgb&w=1200',
           title: 'Sea Cove',
@@ -124,8 +124,8 @@ class HomeScreen extends StatelessWidget {
     ),
     DealSectionModel(
       title: 'New on Savora',
-      items: <DealCardModel>[
-        DealCardModel(
+      items: <FoodVenueCardModel>[
+        FoodVenueCardModel(
           imageUrl:
               'https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=1200',
           title: 'The Brunch Lab',
@@ -135,7 +135,7 @@ class HomeScreen extends StatelessWidget {
           redeemedText: '350+ redeemed',
           tags: <String>['2-for-1 brunch combo'],
         ),
-        DealCardModel(
+        FoodVenueCardModel(
           imageUrl:
               'https://images.pexels.com/photos/1410235/pexels-photo-1410235.jpeg?auto=compress&cs=tinysrgb&w=1200',
           title: 'Sora Ramen',
@@ -149,8 +149,8 @@ class HomeScreen extends StatelessWidget {
     ),
     DealSectionModel(
       title: 'My Favorites',
-      items: <DealCardModel>[
-        DealCardModel(
+      items: <FoodVenueCardModel>[
+        FoodVenueCardModel(
           imageUrl:
               'https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=1200',
           title: 'The Noodle House',
@@ -160,7 +160,7 @@ class HomeScreen extends StatelessWidget {
           redeemedText: '860+ redeemed',
           tags: <String>['2-for-1 noodle set'],
         ),
-        DealCardModel(
+        FoodVenueCardModel(
           imageUrl:
               'https://images.pexels.com/photos/725991/pexels-photo-725991.jpeg?auto=compress&cs=tinysrgb&w=1200',
           title: 'Bella Verona',
@@ -174,8 +174,8 @@ class HomeScreen extends StatelessWidget {
     ),
     DealSectionModel(
       title: 'Pizza',
-      items: <DealCardModel>[
-        DealCardModel(
+      items: <FoodVenueCardModel>[
+        FoodVenueCardModel(
           imageUrl:
               'https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&w=1200',
           title: 'Pizza Harbor',
@@ -185,7 +185,7 @@ class HomeScreen extends StatelessWidget {
           redeemedText: '700+ redeemed',
           tags: <String>['2-for-1 Margherita'],
         ),
-        DealCardModel(
+        FoodVenueCardModel(
           imageUrl:
               'https://images.pexels.com/photos/4109074/pexels-photo-4109074.jpeg?auto=compress&cs=tinysrgb&w=1200',
           title: 'Stone Oven Co.',
@@ -305,7 +305,7 @@ class _HomeViewState extends State<_HomeView> {
                                 (BuildContext context, int index) =>
                                     const SizedBox(width: 16),
                             itemBuilder: (BuildContext context, int index) {
-                              return RecipeCard(item: section.items[index]);
+                              return FoodVenueCard(item: section.items[index]);
                             },
                           ),
                         ),

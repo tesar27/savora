@@ -7,8 +7,8 @@ class HomeCategory {
   final String label;
 }
 
-class DealCardModel {
-  const DealCardModel({
+class FoodVenueCardModel {
+  const FoodVenueCardModel({
     required this.imageUrl,
     required this.title,
     required this.subtitle,
@@ -33,5 +33,5 @@ class DealSectionModel {
   const DealSectionModel({required this.title, required this.items});
 
   final String title;
-  final List<DealCardModel> items;
+  final List<FoodVenueCardModel> items;
 }
