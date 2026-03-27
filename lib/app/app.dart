@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../core/theme/app_theme.dart';
 import 'navigation/main_scaffold.dart';
 
 class SavoraApp extends StatelessWidget {
@@ -11,6 +12,7 @@ class SavoraApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Savora',
       themeMode: ThemeMode.light,
+      theme: AppTheme.light(),
       home: const MainScaffold(),
     );
   }
