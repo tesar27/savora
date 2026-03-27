@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_spacing.dart';
+import '../../../../core/localization/app_localizations.dart';
 import '../../../../core/theme/app_colors.dart';
 import 'models/home_models.dart';
 import 'widgets/category_selector.dart';
@@ -196,9 +197,31 @@ class _HomeView extends StatefulWidget {
 class _HomeViewState extends State<_HomeView> {
   int _selectedCategory = 0;
 
+  String _localizedSectionTitle(AppLocalizations t, String sourceTitle) {
+    switch (sourceTitle) {
+      case 'Nearby':
+        return t.nearby;
+      case 'Top 10 Highlights':
+        return t.top10Highlights;
+      case 'Trending':
+        return t.trending;
+      case 'Top Rated':
+        return t.topRated;
+      case 'New on Savora':
+        return t.newOnSavora;
+      case 'My Favorites':
+        return t.myFavorites;
+      case 'Pizza':
+        return t.pizza;
+      default:
+        return sourceTitle;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
+    final AppLocalizations t = AppLocalizations.of(context);
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -216,7 +239,7 @@ class _HomeViewState extends State<_HomeView> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    const HomeHeader(cityName: 'Freiburg'),
+                    HomeHeader(cityName: t.cityFreiburg),
                     const SizedBox(height: 16),
                     CategorySelector(
                       categories: widget.categories,
@@ -242,7 +265,7 @@ class _HomeViewState extends State<_HomeView> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          section.title,
+                          _localizedSectionTitle(t, section.title),
                           style: textTheme.titleMedium?.copyWith(
                             fontSize: 32,
                             fontWeight: FontWeight.w800,
