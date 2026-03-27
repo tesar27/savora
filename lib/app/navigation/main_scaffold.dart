@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'custom_bottom_nav_bar.dart';
+import 'nav_tab.dart';
 import '../../features/bookings/presentation/bookings_screen.dart';
 import '../../features/discover/presentation/discover_screen.dart';
 import '../../features/favourite/presentation/favourite_screen.dart';
@@ -16,6 +18,14 @@ class MainScaffold extends StatefulWidget {
 class _MainScaffoldState extends State<MainScaffold> {
   int _currentIndex = 0;
 
+  static const List<NavTab> _tabs = <NavTab>[
+    NavTab(label: 'Home', icon: Icons.home_filled),
+    NavTab(label: 'Favourite', icon: Icons.favorite_outline_rounded),
+    NavTab(label: 'Discover', icon: Icons.explore_outlined),
+    NavTab(label: 'Bookings', icon: Icons.history_rounded),
+    NavTab(label: 'Profile', icon: Icons.person_outline_rounded),
+  ];
+
   final List<Widget> _pages = const <Widget>[
     HomeScreen(),
     FavouriteScreen(),
@@ -28,20 +38,14 @@ class _MainScaffoldState extends State<MainScaffold> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(index: _currentIndex, children: _pages),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _currentIndex,
-        onDestinationSelected: (int index) {
+      bottomNavigationBar: CustomBottomNavBar(
+        tabs: _tabs,
+        currentIndex: _currentIndex,
+        onSelected: (int index) {
           setState(() {
             _currentIndex = index;
           });
         },
-        destinations: const <NavigationDestination>[
-          NavigationDestination(icon: Icon(Icons.home_outlined), label: 'Home'),
-          NavigationDestination(icon: Icon(Icons.favorite_border), label: 'Favourite'),
-          NavigationDestination(icon: Icon(Icons.explore_outlined), label: 'Discover'),
-          NavigationDestination(icon: Icon(Icons.history), label: 'Bookings'),
-          NavigationDestination(icon: Icon(Icons.person_outline), label: 'Profile'),
-        ],
       ),
     );
   }
