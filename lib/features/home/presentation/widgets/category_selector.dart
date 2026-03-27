@@ -20,12 +20,12 @@ class CategorySelector extends StatelessWidget {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
     return SizedBox(
-      height: 92,
+      height: 82,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: categories.length,
         separatorBuilder: (BuildContext context, int index) =>
-            const SizedBox(width: 18),
+            const SizedBox(width: 12),
         itemBuilder: (BuildContext context, int index) {
           final HomeCategory category = categories[index];
           final bool selected = selectedIndex == index;
@@ -37,18 +37,22 @@ class CategorySelector extends StatelessWidget {
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 220),
                   curve: Curves.easeOut,
-                  height: 52,
-                  width: 52,
+                  height: 42,
+                  width: 64,
                   decoration: BoxDecoration(
                     color: selected ? AppColors.accent : AppColors.chip,
-                    shape: BoxShape.circle,
+                    borderRadius: BorderRadius.circular(21),
                   ),
-                  child: Icon(category.icon, color: AppColors.textPrimary),
+                  child: Icon(
+                    category.icon,
+                    color: AppColors.textPrimary,
+                    size: 20,
+                  ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 8),
                 Text(
                   category.label,
-                  style: textTheme.bodyMedium?.copyWith(
+                  style: textTheme.bodySmall?.copyWith(
                     color: selected
                         ? AppColors.textPrimary
                         : AppColors.textSecondary,
