@@ -12,14 +12,14 @@ class RecipeCard extends StatelessWidget {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
     return SizedBox(
-      width: 306,
+      width: 294,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           ClipRRect(
             borderRadius: BorderRadius.circular(26),
             child: SizedBox(
-              height: 188,
+              height: 170,
               child: Stack(
                 fit: StackFit.expand,
                 children: <Widget>[
@@ -77,6 +77,7 @@ class RecipeCard extends StatelessWidget {
                           borderRadius: BorderRadius.circular(18),
                         ),
                         child: Row(
+                          mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
                             const Icon(
                               Icons.local_fire_department_rounded,
@@ -84,11 +85,16 @@ class RecipeCard extends StatelessWidget {
                               color: Colors.white,
                             ),
                             const SizedBox(width: 4),
-                            Text(
-                              item.redeemedText!,
-                              style: textTheme.bodyMedium?.copyWith(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w700,
+                            ConstrainedBox(
+                              constraints: const BoxConstraints(maxWidth: 118),
+                              child: Text(
+                                item.redeemedText!,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: textTheme.bodyMedium?.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700,
+                                ),
                               ),
                             ),
                           ],
@@ -105,7 +111,7 @@ class RecipeCard extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: textTheme.titleMedium?.copyWith(
-              fontSize: 20,
+              fontSize: 18,
               fontWeight: FontWeight.w800,
               color: const Color(0xFF1E2130),
             ),
@@ -124,7 +130,7 @@ class RecipeCard extends StatelessWidget {
                   '${item.rating.toStringAsFixed(1)} | ${item.distance} | ${item.subtitle}',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: textTheme.bodyLarge?.copyWith(
+                  style: textTheme.bodyMedium?.copyWith(
                     color: const Color(0xFF6E6F7A),
                     fontWeight: FontWeight.w600,
                   ),
@@ -132,31 +138,38 @@ class RecipeCard extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 10),
-          Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            children: item.tags
-                .map(
-                  (String tag) => Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 14,
-                      vertical: 7,
-                    ),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF48DF8F),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Text(
-                      tag,
-                      style: textTheme.bodyMedium?.copyWith(
-                        color: const Color(0xFF0E2437),
-                        fontWeight: FontWeight.w800,
-                      ),
+          const SizedBox(height: 8),
+          SizedBox(
+            height: 34,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemCount: item.tags.length,
+              separatorBuilder: (BuildContext context, int index) =>
+                  const SizedBox(width: 8),
+              itemBuilder: (BuildContext context, int index) {
+                final String tag = item.tags[index];
+
+                return Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 7,
+                  ),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF48DF8F),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    tag,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: textTheme.bodySmall?.copyWith(
+                      color: const Color(0xFF0E2437),
+                      fontWeight: FontWeight.w800,
                     ),
                   ),
-                )
-                .toList(),
+                );
+              },
+            ),
           ),
         ],
       ),
