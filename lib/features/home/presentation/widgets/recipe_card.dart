@@ -27,16 +27,19 @@ class RecipeCard extends StatelessWidget {
                     item.imageUrl,
                     fit: BoxFit.cover,
                     errorBuilder:
-                        (BuildContext context, Object error, StackTrace? stack) =>
-                            Container(
-                      color: const Color(0xFFECECEC),
-                      alignment: Alignment.center,
-                      child: const Icon(
-                        Icons.restaurant_rounded,
-                        size: 48,
-                        color: Color(0xFF9A9A9A),
-                      ),
-                    ),
+                        (
+                          BuildContext context,
+                          Object error,
+                          StackTrace? stack,
+                        ) => Container(
+                          color: const Color(0xFFECECEC),
+                          alignment: Alignment.center,
+                          child: const Icon(
+                            Icons.restaurant_rounded,
+                            size: 48,
+                            color: Color(0xFF9A9A9A),
+                          ),
+                        ),
                   ),
                   if (item.rank != null)
                     Positioned(
@@ -110,7 +113,11 @@ class RecipeCard extends StatelessWidget {
           const SizedBox(height: 4),
           Row(
             children: <Widget>[
-              const Icon(Icons.star_rounded, size: 20, color: Color(0xFF42D88A)),
+              const Icon(
+                Icons.star_rounded,
+                size: 20,
+                color: Color(0xFF42D88A),
+              ),
               const SizedBox(width: 4),
               Expanded(
                 child: Text(

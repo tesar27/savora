@@ -43,10 +43,7 @@ class CategorySelector extends StatelessWidget {
                     color: selected ? AppColors.accent : AppColors.chip,
                     shape: BoxShape.circle,
                   ),
-                  child: Icon(
-                    category.icon,
-                    color: AppColors.textPrimary,
-                  ),
+                  child: Icon(category.icon, color: AppColors.textPrimary),
                 ),
                 const SizedBox(height: 10),
                 Text(
