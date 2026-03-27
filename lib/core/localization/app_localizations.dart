@@ -78,7 +78,8 @@ class AppLocalizations {
       };
 
   String _text(String key) {
-    final String languageCode = _localizedValues.containsKey(locale.languageCode)
+    final String languageCode =
+        _localizedValues.containsKey(locale.languageCode)
         ? locale.languageCode
         : 'en';
 
@@ -112,7 +113,8 @@ class AppLocalizations {
   String get profileTitle => _text('profileTitle');
 }
 
-class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate
+    extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
