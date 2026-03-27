@@ -20,10 +20,10 @@ class ProfileScreen extends StatelessWidget {
             Text(
               t.settings,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontSize: 32,
-                    fontWeight: FontWeight.w800,
-                    color: const Color(0xFF1C1F2D),
-                  ),
+                fontSize: 32,
+                fontWeight: FontWeight.w800,
+                color: const Color(0xFF1C1F2D),
+              ),
             ),
             const SizedBox(height: 24),
             Container(
@@ -38,9 +38,9 @@ class ProfileScreen extends StatelessWidget {
                     child: Text(
                       t.language,
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF22252F),
-                          ),
+                        fontWeight: FontWeight.w700,
+                        color: const Color(0xFF22252F),
+                      ),
                     ),
                   ),
                   DropdownButton<AppLanguage>(
