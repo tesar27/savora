@@ -49,6 +49,29 @@ class AppLocalizations {
           'discoverTitle': 'Discover',
           'bookingsTitle': 'Bookings',
           'profileTitle': 'Profile',
+          'editProfile': 'Edit Profile',
+          'changePhoto': 'Change Photo',
+          'saveChanges': 'Save Changes',
+          'firstName': 'First Name',
+          'lastName': 'Last Name',
+          'emailAddress': 'Email Address',
+          'password': 'Password',
+          'favorites': 'Favorites',
+          'savings': 'Savings',
+          'deals': 'Deals',
+          'level': 'Level',
+          'restaurants': 'Restaurants',
+          'cities': 'Cities',
+          'rating': 'Rating',
+          'reviews': 'Reviews',
+          'inviteFriends': 'Invite Friends',
+          'friends': 'Friends',
+          'membership': 'Membership',
+          'helpSupport': 'Help & Support',
+          'sendGiftCard': 'Send Gift Card',
+          'editProfileSubtitle': 'Edit profile',
+          'freeMonthBanner': '1 Month NeoTaste free!',
+          'inviteFriendsBanner': 'Invite Friends',
         },
         'de': <String, String>{
           'appTitle': 'Savora',
@@ -74,6 +97,29 @@ class AppLocalizations {
           'discoverTitle': 'Entdecken',
           'bookingsTitle': 'Buchungen',
           'profileTitle': 'Profil',
+          'editProfile': 'Profil bearbeiten',
+          'changePhoto': 'Foto andern',
+          'saveChanges': 'Anderungen speichern',
+          'firstName': 'Vorname',
+          'lastName': 'Nachname',
+          'emailAddress': 'E-Mail-Adresse',
+          'password': 'Passwort',
+          'favorites': 'Favoriten',
+          'savings': 'Ersparnis',
+          'deals': 'Deals',
+          'level': 'Level',
+          'restaurants': 'Restaurants',
+          'cities': 'Stadte',
+          'rating': 'Bewertung',
+          'reviews': 'Rezensionen',
+          'inviteFriends': 'Freund*innen einladen',
+          'friends': 'Freunde',
+          'membership': 'Mitgliedschaft',
+          'helpSupport': 'Hilfe & Support',
+          'sendGiftCard': 'Geschenkkarte senden',
+          'editProfileSubtitle': 'Profil bearbeiten',
+          'freeMonthBanner': '1 Monat NeoTaste gratis!',
+          'inviteFriendsBanner': 'Freund*innen einladen',
         },
       };
 
@@ -111,6 +157,29 @@ class AppLocalizations {
   String get discoverTitle => _text('discoverTitle');
   String get bookingsTitle => _text('bookingsTitle');
   String get profileTitle => _text('profileTitle');
+  String get editProfile => _text('editProfile');
+  String get changePhoto => _text('changePhoto');
+  String get saveChanges => _text('saveChanges');
+  String get firstName => _text('firstName');
+  String get lastName => _text('lastName');
+  String get emailAddress => _text('emailAddress');
+  String get password => _text('password');
+  String get favorites => _text('favorites');
+  String get savings => _text('savings');
+  String get deals => _text('deals');
+  String get level => _text('level');
+  String get restaurants => _text('restaurants');
+  String get cities => _text('cities');
+  String get rating => _text('rating');
+  String get reviews => _text('reviews');
+  String get inviteFriends => _text('inviteFriends');
+  String get friends => _text('friends');
+  String get membership => _text('membership');
+  String get helpSupport => _text('helpSupport');
+  String get sendGiftCard => _text('sendGiftCard');
+  String get editProfileSubtitle => _text('editProfileSubtitle');
+  String get freeMonthBanner => _text('freeMonthBanner');
+  String get inviteFriendsBanner => _text('inviteFriendsBanner');
 }
 
 class _AppLocalizationsDelegate
