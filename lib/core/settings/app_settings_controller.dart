@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum AppLanguage {
-  system,
-  english,
-  german,
-}
+enum AppLanguage { system, english, german }
 
 class AppSettingsController extends ChangeNotifier {
   AppLanguage _language = AppLanguage.system;

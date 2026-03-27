@@ -10,8 +10,8 @@ class AppSettingsScope extends InheritedNotifier<AppSettingsController> {
   }) : super(notifier: controller);
 
   static AppSettingsController of(BuildContext context) {
-    final AppSettingsScope? scope =
-        context.dependOnInheritedWidgetOfExactType<AppSettingsScope>();
+    final AppSettingsScope? scope = context
+        .dependOnInheritedWidgetOfExactType<AppSettingsScope>();
 
     assert(scope != null, 'AppSettingsScope not found in widget tree.');
     return scope!.notifier!;
