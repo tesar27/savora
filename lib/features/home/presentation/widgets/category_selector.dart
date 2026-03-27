@@ -20,7 +20,7 @@ class CategorySelector extends StatelessWidget {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
     return SizedBox(
-      height: 82,
+      height: 94,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: categories.length,
@@ -37,11 +37,12 @@ class CategorySelector extends StatelessWidget {
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 220),
                   curve: Curves.easeOut,
-                  height: 42,
-                  width: 64,
+                  height: 56,
+                  width: 42,
                   decoration: BoxDecoration(
                     color: selected ? AppColors.accent : AppColors.chip,
-                    borderRadius: BorderRadius.circular(21),
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(24),
                   ),
                   child: Icon(
                     category.icon,
