@@ -318,7 +318,7 @@ class _HomeViewState extends State<_HomeView> {
         return SafeArea(
           top: false,
           child: Container(
-            constraints: BoxConstraints(maxHeight: maxHeight),
+            constraints: BoxConstraints(maxHeight: maxHeight + 60),
             decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.vertical(top: Radius.circular(34)),
@@ -342,7 +342,7 @@ class _HomeViewState extends State<_HomeView> {
                       Center(
                         child: Text(
                           t.cities,
-                          style: textTheme.headlineSmall?.copyWith(
+                          style: textTheme.titleLarge?.copyWith(
                             color: const Color(0xFF111111),
                             fontWeight: FontWeight.w800,
                           ),
@@ -608,7 +608,7 @@ class _CitySection extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 22),
                       child: Text(
                         city.name,
-                        style: textTheme.headlineSmall?.copyWith(
+                        style: textTheme.titleLarge?.copyWith(
                           fontWeight: city.name == selectedCity
                               ? FontWeight.w800
                               : FontWeight.w700,
