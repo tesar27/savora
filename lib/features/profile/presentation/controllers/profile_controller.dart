@@ -26,9 +26,10 @@ class ProfileController extends ChangeNotifier {
   }
 
   String get initials {
-    final List<String> segments = <String>[_firstName, _lastName]
-        .where((String value) => value.trim().isNotEmpty)
-        .toList();
+    final List<String> segments = <String>[
+      _firstName,
+      _lastName,
+    ].where((String value) => value.trim().isNotEmpty).toList();
 
     if (segments.isEmpty) {
       return 'SU';

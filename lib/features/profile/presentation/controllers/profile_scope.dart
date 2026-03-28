@@ -10,8 +10,8 @@ class ProfileScope extends InheritedNotifier<ProfileController> {
   }) : super(notifier: controller);
 
   static ProfileController of(BuildContext context) {
-    final ProfileScope? scope =
-        context.dependOnInheritedWidgetOfExactType<ProfileScope>();
+    final ProfileScope? scope = context
+        .dependOnInheritedWidgetOfExactType<ProfileScope>();
 
     assert(scope != null, 'ProfileScope not found in widget tree.');
     return scope!.notifier!;

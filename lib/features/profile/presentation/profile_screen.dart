@@ -159,28 +159,37 @@ class ProfileScreen extends StatelessWidget {
             ProfileMenuTile(
               icon: Icons.language_rounded,
               title: t.language,
-              trailing: DropdownButton<AppLanguage>(
-                value: settings.language,
-                underline: const SizedBox.shrink(),
-                onChanged: (AppLanguage? value) {
-                  if (value != null) {
-                    settings.updateLanguage(value);
-                  }
-                },
-                items: <DropdownMenuItem<AppLanguage>>[
-                  DropdownMenuItem<AppLanguage>(
-                    value: AppLanguage.system,
-                    child: Text(t.languageSystem),
-                  ),
-                  DropdownMenuItem<AppLanguage>(
-                    value: AppLanguage.english,
-                    child: Text(t.languageEnglish),
-                  ),
-                  DropdownMenuItem<AppLanguage>(
-                    value: AppLanguage.german,
-                    child: Text(t.languageGerman),
-                  ),
-                ],
+              trailing: Theme(
+                data: Theme.of(context).copyWith(
+                  hoverColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  canvasColor: Colors.white, // menu background
+                ),
+                child: DropdownButton<AppLanguage>(
+                  value: settings.language,
+                  underline: const SizedBox.shrink(),
+                  onChanged: (AppLanguage? value) {
+                    if (value != null) {
+                      settings.updateLanguage(value);
+                    }
+                  },
+                  items: <DropdownMenuItem<AppLanguage>>[
+                    DropdownMenuItem<AppLanguage>(
+                      value: AppLanguage.system,
+                      child: Text(t.languageSystem),
+                    ),
+                    DropdownMenuItem<AppLanguage>(
+                      value: AppLanguage.english,
+                      child: Text(t.languageEnglish),
+                    ),
+                    DropdownMenuItem<AppLanguage>(
+                      value: AppLanguage.german,
+                      child: Text(t.languageGerman),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

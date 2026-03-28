@@ -22,9 +22,9 @@ class ProfileFormField extends StatelessWidget {
         Text(
           label,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                fontWeight: FontWeight.w700,
-                color: const Color(0xFF22252F),
-              ),
+            fontWeight: FontWeight.w700,
+            color: const Color(0xFF22252F),
+          ),
         ),
         const SizedBox(height: 8),
         TextField(
