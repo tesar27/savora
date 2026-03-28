@@ -70,7 +70,7 @@ class AppLocalizations {
           'helpSupport': 'Help & Support',
           'sendGiftCard': 'Send Gift Card',
           'editProfileSubtitle': 'Edit profile',
-          'freeMonthBanner': '1 Month NeoTaste free!',
+          'freeMonthBanner': '1 Month Savora free!',
           'inviteFriendsBanner': 'Invite Friends',
         },
         'de': <String, String>{
