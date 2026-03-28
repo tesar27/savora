@@ -318,7 +318,7 @@ class _HomeViewState extends State<_HomeView> {
         return SafeArea(
           top: false,
           child: Container(
-            constraints: BoxConstraints(maxHeight: maxHeight + 60),
+            constraints: BoxConstraints(maxHeight: maxHeight + 65),
             decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.vertical(top: Radius.circular(34)),
