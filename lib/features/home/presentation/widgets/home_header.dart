@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class HomeHeader extends StatelessWidget {
-  const HomeHeader({required this.cityName, super.key});
+  const HomeHeader({required this.cityName, this.onCityTap, super.key});
 
   final String cityName;
+  final VoidCallback? onCityTap;
 
   @override
   Widget build(BuildContext context) {
@@ -12,19 +13,26 @@ class HomeHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        Row(
-          children: <Widget>[
-            Text(
-              cityName,
-              style: textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.w700,
-                color: const Color(0xFF171A24),
-                letterSpacing: -0.4,
-              ),
+        InkWell(
+          onTap: onCityTap,
+          borderRadius: BorderRadius.circular(20),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+            child: Row(
+              children: <Widget>[
+                Text(
+                  cityName,
+                  style: textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.w700,
+                    color: const Color(0xFF171A24),
+                    letterSpacing: -0.4,
+                  ),
+                ),
+                const SizedBox(width: 4),
+                const Icon(Icons.keyboard_arrow_down_rounded, size: 22),
+              ],
             ),
-            const SizedBox(width: 4),
-            const Icon(Icons.keyboard_arrow_down_rounded, size: 22),
-          ],
+          ),
         ),
         SizedBox(
           height: 40,

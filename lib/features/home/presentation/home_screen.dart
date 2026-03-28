@@ -216,7 +216,63 @@ class _HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<_HomeView> {
+  static const List<_CityOption> _cities = <_CityOption>[
+    _CityOption(country: _CityCountry.switzerland, name: 'Zurich', deals: 626),
+    _CityOption(country: _CityCountry.switzerland, name: 'Geneva', deals: 354),
+    _CityOption(country: _CityCountry.switzerland, name: 'Basel', deals: 268),
+    _CityOption(country: _CityCountry.switzerland, name: 'Bern', deals: 210),
+    _CityOption(
+      country: _CityCountry.switzerland,
+      name: 'Lausanne',
+      deals: 188,
+    ),
+    _CityOption(country: _CityCountry.switzerland, name: 'Lucerne', deals: 142),
+    _CityOption(country: _CityCountry.switzerland, name: 'Freiburg', deals: 78),
+    _CityOption(
+      country: _CityCountry.switzerland,
+      name: 'St. Gallen',
+      deals: 100,
+    ),
+    _CityOption(
+      country: _CityCountry.switzerland,
+      name: 'Winterthur',
+      deals: 104,
+    ),
+    _CityOption(country: _CityCountry.switzerland, name: 'Lugano', deals: 98),
+    _CityOption(country: _CityCountry.switzerland, name: 'Zug', deals: 94),
+    _CityOption(
+      country: _CityCountry.germany,
+      name: 'Freiburg im Breisgau',
+      deals: 210,
+    ),
+    _CityOption(country: _CityCountry.germany, name: 'Konstanz', deals: 188),
+    _CityOption(country: _CityCountry.germany, name: 'Loerrach', deals: 142),
+    _CityOption(
+      country: _CityCountry.germany,
+      name: 'Weil am Rhein',
+      deals: 104,
+    ),
+    _CityOption(
+      country: _CityCountry.germany,
+      name: 'Waldshut-Tiengen',
+      deals: 96,
+    ),
+    _CityOption(country: _CityCountry.germany, name: 'Singen', deals: 94),
+    _CityOption(
+      country: _CityCountry.germany,
+      name: 'Villingen-Schwenningen',
+      deals: 100,
+    ),
+    _CityOption(country: _CityCountry.germany, name: 'Offenburg', deals: 78),
+    _CityOption(
+      country: _CityCountry.germany,
+      name: 'Friedrichshafen',
+      deals: 98,
+    ),
+  ];
+
   int _selectedCategory = 0;
+  String _selectedCity = 'Freiburg';
 
   String _localizedSectionTitle(AppLocalizations t, String sourceTitle) {
     switch (sourceTitle) {
@@ -237,6 +293,129 @@ class _HomeViewState extends State<_HomeView> {
       default:
         return sourceTitle;
     }
+  }
+
+  String _countryLabel(AppLocalizations t, _CityCountry country) {
+    final bool isGerman = t.locale.languageCode == 'de';
+
+    switch (country) {
+      case _CityCountry.switzerland:
+        return isGerman ? 'SCHWEIZ' : 'SWITZERLAND';
+      case _CityCountry.germany:
+        return isGerman ? 'DEUTSCHLAND' : 'GERMANY';
+    }
+  }
+
+  Future<void> _openCityPicker(AppLocalizations t) async {
+    await showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (BuildContext context) {
+        final TextTheme textTheme = Theme.of(context).textTheme;
+        final double maxHeight = MediaQuery.of(context).size.height * 0.88;
+
+        return SafeArea(
+          top: false,
+          child: Container(
+            constraints: BoxConstraints(maxHeight: maxHeight),
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.vertical(top: Radius.circular(34)),
+            ),
+            child: Column(
+              children: <Widget>[
+                const SizedBox(height: 10),
+                Container(
+                  width: 58,
+                  height: 7,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFD5D5D5),
+                    borderRadius: BorderRadius.circular(999),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(18, 12, 18, 14),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: <Widget>[
+                      Center(
+                        child: Text(
+                          t.cities,
+                          style: textTheme.headlineSmall?.copyWith(
+                            color: const Color(0xFF111111),
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Material(
+                          color: const Color(0xFFF4F4F4),
+                          shape: const CircleBorder(),
+                          child: InkWell(
+                            customBorder: const CircleBorder(),
+                            onTap: () => Navigator.of(context).pop(),
+                            child: const SizedBox(
+                              width: 44,
+                              height: 44,
+                              child: Icon(
+                                Icons.close_rounded,
+                                color: Color(0xFF777777),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: ListView(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 24),
+                    children: <Widget>[
+                      _CitySection(
+                        label: _countryLabel(t, _CityCountry.switzerland),
+                        countryCode: 'CH',
+                        items: _cities
+                            .where(
+                              (_CityOption city) =>
+                                  city.country == _CityCountry.switzerland,
+                            )
+                            .toList(),
+                        selectedCity: _selectedCity,
+                        dealsLabel: 'Deals',
+                        onSelected: _selectCity,
+                      ),
+                      _CitySection(
+                        label: _countryLabel(t, _CityCountry.germany),
+                        countryCode: 'DE',
+                        items: _cities
+                            .where(
+                              (_CityOption city) =>
+                                  city.country == _CityCountry.germany,
+                            )
+                            .toList(),
+                        selectedCity: _selectedCity,
+                        dealsLabel: 'Deals',
+                        onSelected: _selectCity,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  void _selectCity(_CityOption city) {
+    setState(() {
+      _selectedCity = city.name;
+    });
+    Navigator.of(context).pop();
   }
 
   @override
@@ -260,7 +439,10 @@ class _HomeViewState extends State<_HomeView> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    HomeHeader(cityName: t.cityFreiburg),
+                    HomeHeader(
+                      cityName: _selectedCity,
+                      onCityTap: () => _openCityPicker(t),
+                    ),
                     const SizedBox(height: 16),
                     CategorySelector(
                       categories: widget.categories,
@@ -320,6 +502,143 @@ class _HomeViewState extends State<_HomeView> {
           ],
         ),
       ),
+    );
+  }
+}
+
+enum _CityCountry { switzerland, germany }
+
+class _CityOption {
+  const _CityOption({
+    required this.country,
+    required this.name,
+    required this.deals,
+  });
+
+  final _CityCountry country;
+  final String name;
+  final int deals;
+}
+
+class _CitySection extends StatelessWidget {
+  const _CitySection({
+    required this.label,
+    required this.countryCode,
+    required this.items,
+    required this.selectedCity,
+    required this.dealsLabel,
+    required this.onSelected,
+  });
+
+  final String label;
+  final String countryCode;
+  final List<_CityOption> items;
+  final String selectedCity;
+  final String dealsLabel;
+  final ValueChanged<_CityOption> onSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.fromLTRB(28, 8, 28, 18),
+          child: Row(
+            children: <Widget>[
+              Container(
+                width: 38,
+                height: 38,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFF5F5F5),
+                  borderRadius: BorderRadius.circular(19),
+                ),
+                child: Text(
+                  countryCode,
+                  style: textTheme.labelMedium?.copyWith(
+                    color: const Color(0xFF111111),
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 14),
+              Text(
+                label,
+                style: textTheme.titleMedium?.copyWith(
+                  color: const Color(0xFF7A7A86),
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: 0.3,
+                ),
+              ),
+            ],
+          ),
+        ),
+        const Divider(height: 1, color: Color(0xFFE7E7E7)),
+        for (final _CityOption city in items) ...<Widget>[
+          InkWell(
+            onTap: () => onSelected(city),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(28, 0, 28, 0),
+              child: Row(
+                children: <Widget>[
+                  SizedBox(
+                    width: 38,
+                    child: city.name == selectedCity
+                        ? Container(
+                            width: 28,
+                            height: 28,
+                            decoration: const BoxDecoration(
+                              color: Color(0xFF4BE289),
+                              shape: BoxShape.circle,
+                            ),
+                            child: const Icon(
+                              Icons.check_rounded,
+                              size: 20,
+                              color: Color(0xFF111111),
+                            ),
+                          )
+                        : null,
+                  ),
+                  const SizedBox(width: 18),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 22),
+                      child: Text(
+                        city.name,
+                        style: textTheme.headlineSmall?.copyWith(
+                          fontWeight: city.name == selectedCity
+                              ? FontWeight.w800
+                              : FontWeight.w700,
+                          color: city.name == selectedCity
+                              ? const Color(0xFF171A24)
+                              : const Color(0xFF7C7D89),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Text(
+                    '${city.deals} $dealsLabel',
+                    style: textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: city.name == selectedCity
+                          ? const Color(0xFF6B6C78)
+                          : const Color(0xFF7C7D89),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(left: 84, right: 28),
+            child: Divider(height: 1, color: Color(0xFFE7E7E7)),
+          ),
+        ],
+      ],
     );
   }
 }
