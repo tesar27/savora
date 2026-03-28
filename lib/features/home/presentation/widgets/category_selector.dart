@@ -37,8 +37,8 @@ class CategorySelector extends StatelessWidget {
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 220),
                   curve: Curves.easeOut,
-                  height: 56,
-                  width: 42,
+                  height: 68,
+                  width: 54,
                   decoration: BoxDecoration(
                     color: selected ? AppColors.accent : AppColors.chip,
                     shape: BoxShape.rectangle,
@@ -47,7 +47,7 @@ class CategorySelector extends StatelessWidget {
                   child: Icon(
                     category.icon,
                     color: AppColors.textPrimary,
-                    size: 20,
+                    size: 25,
                   ),
                 ),
                 const SizedBox(height: 8),
