@@ -39,7 +39,7 @@ class CustomBottomNavBar extends StatelessWidget {
               final double collapsedWidth = tabs.length == 1
                   ? constraints.maxWidth
                   : (constraints.maxWidth - totalSpacing - selectedWidth) /
-                      (tabs.length - 1);
+                        (tabs.length - 1);
 
               return Row(
                 children: List<Widget>.generate(tabs.length, (int index) {
