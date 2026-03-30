@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_spacing.dart';
+import '../../../../core/di/repositories.dart';
 import '../../../../core/localization/app_localizations.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../eatery/domain/models/eatery.dart';
+import '../../eatery/presentation/eatery_detail_screen.dart';
 import 'models/home_models.dart';
 import 'widgets/category_selector.dart';
 import 'widgets/food_venue_card.dart';
@@ -19,25 +22,27 @@ class HomeScreen extends StatelessWidget {
     HomeCategory(icon: Icons.icecream_rounded, label: 'Dessert'),
   ];
 
-  static const List<DealSectionModel> _sections = <DealSectionModel>[
-    DealSectionModel(
+  static const List<EaterySectionModel> _sections = <EaterySectionModel>[
+    EaterySectionModel(
       title: 'Nearby',
-      items: <FoodVenueCardModel>[
-        FoodVenueCardModel(
+      items: <EateryCardModel>[
+        EateryCardModel(
+          id: 'fino',
           imageUrl:
               'https://images.pexels.com/photos/5938/food-salad-healthy-lunch.jpg?auto=compress&cs=tinysrgb&w=1200',
-          title: 'Fino',
-          subtitle: 'Cafe, Ice Cream, Drinks',
+          name: 'Fino',
+          category: 'Cafe, Ice Cream, Drinks',
           rating: 4.8,
           distance: '70 km',
           redeemedText: '100+ redeemed',
           tags: <String>['2-for-1 cakes', '2-for-1 winery deal'],
         ),
-        FoodVenueCardModel(
+        EateryCardModel(
+          id: 'tama-bistro',
           imageUrl:
               'https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&w=1200',
-          title: 'Tama Bistro',
-          subtitle: 'Bistro, Burgers, Lunch',
+          name: 'Tama Bistro',
+          category: 'Bistro, Burgers, Lunch',
           rating: 4.9,
           distance: '71 km',
           redeemedText: '100+ redeemed',
@@ -45,25 +50,27 @@ class HomeScreen extends StatelessWidget {
         ),
       ],
     ),
-    DealSectionModel(
+    EaterySectionModel(
       title: 'Top 10 Highlights',
-      items: <FoodVenueCardModel>[
-        FoodVenueCardModel(
+      items: <EateryCardModel>[
+        EateryCardModel(
+          id: 'losteria-freiburg',
           imageUrl:
               'https://images.pexels.com/photos/2619967/pexels-photo-2619967.jpeg?auto=compress&cs=tinysrgb&w=1200',
-          title: "L'Osteria Freiburg Ramparts",
-          subtitle: 'Italian, Pizza, Pasta',
+          name: "L'Osteria Freiburg Ramparts",
+          category: 'Italian, Pizza, Pasta',
           rating: 4.8,
           distance: '71 km',
           rank: '#1',
           redeemedText: '3.8k+ redeemed',
           tags: <String>['2-for-1 pasta', '2-for-1 aperitif'],
         ),
-        FoodVenueCardModel(
+        EateryCardModel(
+          id: 'enchilada-freiburg',
           imageUrl:
               'https://images.pexels.com/photos/4958792/pexels-photo-4958792.jpeg?auto=compress&cs=tinysrgb&w=1200',
-          title: 'Enchilada Freiburg',
-          subtitle: 'Mexican, Tacos, Dinner',
+          name: 'Enchilada Freiburg',
+          category: 'Mexican, Tacos, Dinner',
           rating: 4.8,
           distance: '71 km',
           rank: '#2',
@@ -72,24 +79,26 @@ class HomeScreen extends StatelessWidget {
         ),
       ],
     ),
-    DealSectionModel(
+    EaterySectionModel(
       title: 'Trending',
-      items: <FoodVenueCardModel>[
-        FoodVenueCardModel(
+      items: <EateryCardModel>[
+        EateryCardModel(
+          id: 'golden-slice',
           imageUrl:
               'https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1200',
-          title: 'Golden Slice',
-          subtitle: 'Pizza, Casual Dining',
+          name: 'Golden Slice',
+          category: 'Pizza, Casual Dining',
           rating: 4.7,
           distance: '18 km',
           redeemedText: '2k+ redeemed',
           tags: <String>['2-for-1 family pizza'],
         ),
-        FoodVenueCardModel(
+        EateryCardModel(
+          id: 'urban-grill',
           imageUrl:
               'https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg?auto=compress&cs=tinysrgb&w=1200',
-          title: 'Urban Grill',
-          subtitle: 'Steak, Burgers',
+          name: 'Urban Grill',
+          category: 'Steak, Burgers',
           rating: 4.6,
           distance: '23 km',
           redeemedText: '1.5k+ redeemed',
@@ -97,24 +106,26 @@ class HomeScreen extends StatelessWidget {
         ),
       ],
     ),
-    DealSectionModel(
+    EaterySectionModel(
       title: 'Top Rated',
-      items: <FoodVenueCardModel>[
-        FoodVenueCardModel(
+      items: <EateryCardModel>[
+        EateryCardModel(
+          id: 'rosso-trattoria',
           imageUrl:
               'https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=1200',
-          title: 'Rosso Trattoria',
-          subtitle: 'Italian, Fine Dining',
+          name: 'Rosso Trattoria',
+          category: 'Italian, Fine Dining',
           rating: 4.9,
           distance: '11 km',
           redeemedText: '1.1k+ redeemed',
           tags: <String>['2-for-1 tasting menu'],
         ),
-        FoodVenueCardModel(
+        EateryCardModel(
+          id: 'sea-cove',
           imageUrl:
               'https://images.pexels.com/photos/2233729/pexels-photo-2233729.jpeg?auto=compress&cs=tinysrgb&w=1200',
-          title: 'Sea Cove',
-          subtitle: 'Seafood, Grill',
+          name: 'Sea Cove',
+          category: 'Seafood, Grill',
           rating: 4.9,
           distance: '15 km',
           redeemedText: '950+ redeemed',
@@ -122,24 +133,26 @@ class HomeScreen extends StatelessWidget {
         ),
       ],
     ),
-    DealSectionModel(
+    EaterySectionModel(
       title: 'New on Savora',
-      items: <FoodVenueCardModel>[
-        FoodVenueCardModel(
+      items: <EateryCardModel>[
+        EateryCardModel(
+          id: 'the-brunch-lab',
           imageUrl:
               'https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=1200',
-          title: 'The Brunch Lab',
-          subtitle: 'Brunch, Coffee',
+          name: 'The Brunch Lab',
+          category: 'Brunch, Coffee',
           rating: 4.6,
           distance: '8 km',
           redeemedText: '350+ redeemed',
           tags: <String>['2-for-1 brunch combo'],
         ),
-        FoodVenueCardModel(
+        EateryCardModel(
+          id: 'sora-ramen',
           imageUrl:
               'https://images.pexels.com/photos/1410235/pexels-photo-1410235.jpeg?auto=compress&cs=tinysrgb&w=1200',
-          title: 'Sora Ramen',
-          subtitle: 'Japanese, Noodles',
+          name: 'Sora Ramen',
+          category: 'Japanese, Noodles',
           rating: 4.7,
           distance: '9 km',
           redeemedText: '420+ redeemed',
@@ -147,24 +160,26 @@ class HomeScreen extends StatelessWidget {
         ),
       ],
     ),
-    DealSectionModel(
+    EaterySectionModel(
       title: 'My Favorites',
-      items: <FoodVenueCardModel>[
-        FoodVenueCardModel(
+      items: <EateryCardModel>[
+        EateryCardModel(
+          id: 'the-noodle-house',
           imageUrl:
               'https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=1200',
-          title: 'The Noodle House',
-          subtitle: 'Asian, Noodles',
+          name: 'The Noodle House',
+          category: 'Asian, Noodles',
           rating: 4.8,
           distance: '12 km',
           redeemedText: '860+ redeemed',
           tags: <String>['2-for-1 noodle set'],
         ),
-        FoodVenueCardModel(
+        EateryCardModel(
+          id: 'bella-verona',
           imageUrl:
               'https://images.pexels.com/photos/725991/pexels-photo-725991.jpeg?auto=compress&cs=tinysrgb&w=1200',
-          title: 'Bella Verona',
-          subtitle: 'Italian, Pasta',
+          name: 'Bella Verona',
+          category: 'Italian, Pasta',
           rating: 4.8,
           distance: '17 km',
           redeemedText: '1.2k+ redeemed',
@@ -172,24 +187,26 @@ class HomeScreen extends StatelessWidget {
         ),
       ],
     ),
-    DealSectionModel(
+    EaterySectionModel(
       title: 'Pizza',
-      items: <FoodVenueCardModel>[
-        FoodVenueCardModel(
+      items: <EateryCardModel>[
+        EateryCardModel(
+          id: 'pizza-harbor',
           imageUrl:
               'https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&w=1200',
-          title: 'Pizza Harbor',
-          subtitle: 'Pizza, Delivery',
+          name: 'Pizza Harbor',
+          category: 'Pizza, Delivery',
           rating: 4.7,
           distance: '10 km',
           redeemedText: '700+ redeemed',
           tags: <String>['2-for-1 Margherita'],
         ),
-        FoodVenueCardModel(
+        EateryCardModel(
+          id: 'stone-oven-co',
           imageUrl:
               'https://images.pexels.com/photos/4109074/pexels-photo-4109074.jpeg?auto=compress&cs=tinysrgb&w=1200',
-          title: 'Stone Oven Co.',
-          subtitle: 'Wood-fired Pizza',
+          name: 'Stone Oven Co.',
+          category: 'Wood-fired Pizza',
           rating: 4.8,
           distance: '16 km',
           redeemedText: '980+ redeemed',
@@ -209,7 +226,7 @@ class _HomeView extends StatefulWidget {
   const _HomeView({required this.categories, required this.sections});
 
   final List<HomeCategory> categories;
-  final List<DealSectionModel> sections;
+  final List<EaterySectionModel> sections;
 
   @override
   State<_HomeView> createState() => _HomeViewState();
@@ -273,6 +290,17 @@ class _HomeViewState extends State<_HomeView> {
 
   int _selectedCategory = 0;
   String _selectedCity = 'Freiburg';
+
+  Future<void> _onEateryTap(String id) async {
+    final Eatery? eatery = await Repositories.eateries.getEatery(id);
+    if (eatery != null && mounted) {
+      await Navigator.of(context).push<void>(
+        MaterialPageRoute<void>(
+          builder: (_) => EateryDetailScreen(eatery: eatery),
+        ),
+      );
+    }
+  }
 
   String _localizedSectionTitle(AppLocalizations t, String sourceTitle) {
     switch (sourceTitle) {
@@ -461,7 +489,7 @@ class _HomeViewState extends State<_HomeView> {
               padding: const EdgeInsets.only(bottom: AppSpacing.xxl),
               sliver: SliverList.separated(
                 itemBuilder: (BuildContext context, int index) {
-                  final DealSectionModel section = widget.sections[index];
+                  final EaterySectionModel section = widget.sections[index];
                   return Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: AppSpacing.lg,
@@ -486,7 +514,12 @@ class _HomeViewState extends State<_HomeView> {
                                 (BuildContext context, int index) =>
                                     const SizedBox(width: 16),
                             itemBuilder: (BuildContext context, int index) {
-                              return FoodVenueCard(item: section.items[index]);
+                              final EateryCardModel item =
+                                  section.items[index];
+                              return EateryCard(
+                                item: item,
+                                onTap: () => _onEateryTap(item.id),
+                              );
                             },
                           ),
                         ),
