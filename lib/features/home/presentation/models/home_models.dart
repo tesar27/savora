@@ -7,11 +7,15 @@ class HomeCategory {
   final String label;
 }
 
-class FoodVenueCardModel {
-  const FoodVenueCardModel({
+/// Lightweight card model used in the home feed.
+///
+/// [id] links to the full [Eatery] domain model via [EateryRepository].
+class EateryCardModel {
+  const EateryCardModel({
+    required this.id,
     required this.imageUrl,
-    required this.title,
-    required this.subtitle,
+    required this.name,
+    required this.category,
     required this.rating,
     required this.distance,
     required this.tags,
@@ -19,9 +23,10 @@ class FoodVenueCardModel {
     this.redeemedText,
   });
 
+  final String id;
   final String imageUrl;
-  final String title;
-  final String subtitle;
+  final String name;
+  final String category;
   final double rating;
   final String distance;
   final List<String> tags;
@@ -29,9 +34,9 @@ class FoodVenueCardModel {
   final String? redeemedText;
 }
 
-class DealSectionModel {
-  const DealSectionModel({required this.title, required this.items});
+class EaterySectionModel {
+  const EaterySectionModel({required this.title, required this.items});
 
   final String title;
-  final List<FoodVenueCardModel> items;
+  final List<EateryCardModel> items;
 }
