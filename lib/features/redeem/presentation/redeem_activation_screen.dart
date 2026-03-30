@@ -34,8 +34,7 @@ class RedeemActivationScreen extends StatefulWidget {
   final String? userComment;
 
   @override
-  State<RedeemActivationScreen> createState() =>
-      _RedeemActivationScreenState();
+  State<RedeemActivationScreen> createState() => _RedeemActivationScreenState();
 }
 
 class _RedeemActivationScreenState extends State<RedeemActivationScreen>
@@ -70,35 +69,46 @@ class _RedeemActivationScreenState extends State<RedeemActivationScreen>
   }
 
   Future<void> _onSlideComplete() async {
-    // 1. Persist booking
-    final String userId = await AnonymousUserService.ensureUserId();
-    final Booking booking = Booking(
-      id: _uuid(),
-      userId: userId,
-      eateryId: widget.eatery.id,
-      eateryName: widget.eatery.name,
-      eateryImageUrl: widget.eatery.imageUrl,
-      eateryCategory: widget.eatery.category,
-      dealId: widget.deal.id,
-      dealTitle: widget.deal.title,
-      dealSavingsLabel: widget.deal.savingsLabel,
-      redeemedAt: DateTime.now().toUtc(),
-      userRating: widget.userRating,
-      userComment: widget.userComment,
-    );
-    await Repositories.bookings.save(booking);
+    try {
+      // 1. Persist booking
+      final String userId = await AnonymousUserService.ensureUserId();
+      final Booking booking = Booking(
+        id: _uuid(),
+        userId: userId,
+        eateryId: widget.eatery.id,
+        eateryName: widget.eatery.name,
+        eateryImageUrl: widget.eatery.imageUrl,
+        eateryCategory: widget.eatery.category,
+        dealId: widget.deal.id,
+        dealTitle: widget.deal.title,
+        dealSavingsLabel: widget.deal.savingsLabel,
+        redeemedAt: DateTime.now().toUtc(),
+        userRating: widget.userRating,
+        userComment: widget.userComment,
+      );
+      await Repositories.bookings.save(booking);
 
-    // 2. Show congratulations overlay
-    if (!mounted) return;
-    setState(() => _redeemed = true);
-    _confettiController.forward();
-    _checkController.forward();
+      // 2. Show congratulations overlay
+      if (!mounted) return;
+      setState(() => _redeemed = true);
+      _confettiController.forward();
+      _checkController.forward();
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Could not save booking: $e'),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+      // Re-throw so the slider can reset itself for a retry
+      rethrow;
+    }
   }
 
   String _uuid() {
     final math.Random rng = math.Random.secure();
-    final List<int> bytes =
-        List<int>.generate(16, (_) => rng.nextInt(256));
+    final List<int> bytes = List<int>.generate(16, (_) => rng.nextInt(256));
     bytes[6] = (bytes[6] & 0x0f) | 0x40;
     bytes[8] = (bytes[8] & 0x3f) | 0x80;
     final StringBuffer buf = StringBuffer();
@@ -156,7 +166,7 @@ class _ActivationView extends StatelessWidget {
 
   final Eatery eatery;
   final EateryDeal deal;
-  final VoidCallback onSlideComplete;
+  final Future<void> Function() onSlideComplete;
 
   @override
   Widget build(BuildContext context) {
@@ -270,7 +280,7 @@ class _ActivationView extends StatelessWidget {
 class _SwipeSlider extends StatefulWidget {
   const _SwipeSlider({required this.onCompleted});
 
-  final VoidCallback onCompleted;
+  final Future<void> Function() onCompleted;
 
   @override
   State<_SwipeSlider> createState() => _SwipeSliderState();
@@ -307,12 +317,19 @@ class _SwipeSliderState extends State<_SwipeSlider>
     if (_triggered) return;
     _snapBack.stop();
     setState(() {
-      _thumbOffset =
-          (_thumbOffset + details.delta.dx).clamp(0.0, _maxOffset);
+      _thumbOffset = (_thumbOffset + details.delta.dx).clamp(0.0, _maxOffset);
     });
     if (_thumbOffset >= _maxOffset * 0.88) {
       _triggered = true;
-      widget.onCompleted();
+      widget.onCompleted().catchError((Object e) {
+        // Save failed — reset slider so the user can try again
+        if (mounted) {
+          setState(() {
+            _triggered = false;
+            _thumbOffset = 0;
+          });
+        }
+      });
     }
   }
 
@@ -333,11 +350,11 @@ class _SwipeSliderState extends State<_SwipeSlider>
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
-        _maxOffset =
-            constraints.maxWidth - _thumbSize - _trackPadding * 2;
+        _maxOffset = constraints.maxWidth - _thumbSize - _trackPadding * 2;
 
-        final double progress =
-            _maxOffset > 0 ? (_thumbOffset / _maxOffset).clamp(0.0, 1.0) : 0.0;
+        final double progress = _maxOffset > 0
+            ? (_thumbOffset / _maxOffset).clamp(0.0, 1.0)
+            : 0.0;
 
         return GestureDetector(
           onHorizontalDragUpdate: _handleDragUpdate,
@@ -367,9 +384,9 @@ class _SwipeSliderState extends State<_SwipeSlider>
                           'Slide to Redeem',
                           style: Theme.of(context).textTheme.bodyLarge
                               ?.copyWith(
-                            color: const Color(0xFF9A9A9A),
-                            fontWeight: FontWeight.w600,
-                          ),
+                                color: const Color(0xFF9A9A9A),
+                                fontWeight: FontWeight.w600,
+                              ),
                         ),
                       ],
                     ),
@@ -387,7 +404,9 @@ class _SwipeSliderState extends State<_SwipeSlider>
                       shape: BoxShape.circle,
                       boxShadow: <BoxShadow>[
                         BoxShadow(
-                          color: const Color(0xFF4BE289).withValues(alpha: 0.35),
+                          color: const Color(
+                            0xFF4BE289,
+                          ).withValues(alpha: 0.35),
                           blurRadius: 14,
                           spreadRadius: 2,
                         ),
@@ -566,8 +585,7 @@ class _ConfettiPainter extends CustomPainter {
   final double progress; // 0..1
   final List<_ConfettiParticle> particles;
 
-  static final List<_ConfettiParticle> defaultParticles =
-      _generate(count: 70);
+  static final List<_ConfettiParticle> defaultParticles = _generate(count: 70);
 
   static List<_ConfettiParticle> _generate({required int count}) {
     const List<Color> palette = <Color>[
@@ -598,8 +616,8 @@ class _ConfettiPainter extends CustomPainter {
     for (final _ConfettiParticle p in particles) {
       final double t = (progress * p.speed * 2.8) % 1.0;
       final double y = t * size.height;
-      final double x = p.x * size.width +
-          math.sin(progress * math.pi * 4 + p.phase) * 24;
+      final double x =
+          p.x * size.width + math.sin(progress * math.pi * 4 + p.phase) * 24;
 
       final double fade = t > 0.75 ? (1.0 - t) / 0.25 : 1.0;
       paint.color = p.color.withValues(alpha: fade.clamp(0.0, 1.0));
