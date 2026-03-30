@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../domain/models/eatery.dart';
 import '../domain/models/opening_hours.dart';
+import '../../redeem/presentation/redeem_rating_screen.dart';
 import 'widgets/eatery_deal_card.dart';
 import 'widgets/eatery_review_tile.dart';
 
@@ -76,20 +77,17 @@ class _EateryDetailScreenState extends State<EateryDetailScreen> {
                 height: _kImageHeight,
                 width: double.infinity,
                 fit: BoxFit.cover,
-                errorBuilder: (
-                  BuildContext context,
-                  Object error,
-                  StackTrace? stack,
-                ) =>
-                    Container(
-                      height: _kImageHeight,
-                      color: const Color(0xFFECECEC),
-                      child: const Icon(
-                        Icons.restaurant_rounded,
-                        size: 72,
-                        color: Color(0xFF9A9A9A),
-                      ),
-                    ),
+                errorBuilder:
+                    (BuildContext context, Object error, StackTrace? stack) =>
+                        Container(
+                          height: _kImageHeight,
+                          color: const Color(0xFFECECEC),
+                          child: const Icon(
+                            Icons.restaurant_rounded,
+                            size: 72,
+                            color: Color(0xFF9A9A9A),
+                          ),
+                        ),
               ),
             ),
           ),
@@ -216,9 +214,7 @@ class _ContentSheet extends StatelessWidget {
                 const SizedBox(height: 4),
                 Text(
                   eatery.category,
-                  style: tt.bodyLarge?.copyWith(
-                    color: const Color(0xFF7C7D89),
-                  ),
+                  style: tt.bodyLarge?.copyWith(color: const Color(0xFF7C7D89)),
                 ),
               ],
             ),
@@ -300,15 +296,14 @@ class _ContentSheet extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 14),
               child: EateryDealCard(
                 deal: deal,
-                onRedeem: () {
-                  // TODO: navigate to redeem flow
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Redeeming "${deal.title}"…'),
-                      behavior: SnackBarBehavior.floating,
+                onRedeem: () => Navigator.of(context).push(
+                  MaterialPageRoute<void>(
+                    builder: (_) => RedeemRatingScreen(
+                      eatery: eatery,
+                      deal: deal,
                     ),
-                  );
-                },
+                  ),
+                ),
               ),
             ),
           ),
@@ -351,14 +346,15 @@ class _ContentSheet extends StatelessWidget {
                   Row(
                     children: List<Widget>.generate(5, (int i) {
                       final bool filled = i < eatery.rating.floor();
-                      final bool half = i == eatery.rating.floor() &&
+                      final bool half =
+                          i == eatery.rating.floor() &&
                           eatery.rating % 1 >= 0.5;
                       return Icon(
                         half
                             ? Icons.star_half_rounded
                             : filled
-                                ? Icons.star_rounded
-                                : Icons.star_outline_rounded,
+                            ? Icons.star_rounded
+                            : Icons.star_outline_rounded,
                         color: const Color(0xFF42D88A),
                         size: 24,
                       );
@@ -377,9 +373,7 @@ class _ContentSheet extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           const Divider(height: 1, color: Color(0xFFEEEEEE)),
-          ...eatery.reviews.map(
-            (review) => EateryReviewTile(review: review),
-          ),
+          ...eatery.reviews.map((review) => EateryReviewTile(review: review)),
           const SizedBox(height: 12),
           SizedBox(
             width: double.infinity,
@@ -427,7 +421,9 @@ class _ContentSheet extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     'Location',
-                    style: tt.titleMedium?.copyWith(fontWeight: FontWeight.w700),
+                    style: tt.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                   Text(
                     eatery.address,
@@ -475,7 +471,9 @@ class _ContentSheet extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     'Contact',
-                    style: tt.titleMedium?.copyWith(fontWeight: FontWeight.w700),
+                    style: tt.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                   Text(
                     eatery.phone!,
@@ -519,8 +517,9 @@ class _ContentSheet extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       'Opening Hours',
-                      style:
-                          tt.titleMedium?.copyWith(fontWeight: FontWeight.w700),
+                      style: tt.titleMedium?.copyWith(
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                     const SizedBox(height: 10),
                     ...eatery.openingHours.map(
@@ -536,9 +535,7 @@ class _ContentSheet extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              h.isClosed
-                                  ? 'Closed'
-                                  : '${h.open} – ${h.close}',
+                              h.isClosed ? 'Closed' : '${h.open} – ${h.close}',
                               style: tt.bodyMedium?.copyWith(
                                 color: h.isClosed
                                     ? Colors.redAccent
@@ -570,9 +567,7 @@ class _ContentSheet extends StatelessWidget {
           onPressed: () {},
           icon: const Icon(Icons.chat_bubble_outline_rounded, size: 18),
           label: const Text('Report a Problem'),
-          style: TextButton.styleFrom(
-            foregroundColor: const Color(0xFF9A9AAA),
-          ),
+          style: TextButton.styleFrom(foregroundColor: const Color(0xFF9A9AAA)),
         ),
       ),
     );
