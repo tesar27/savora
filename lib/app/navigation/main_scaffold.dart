@@ -12,12 +12,43 @@ import '../../features/profile/presentation/profile_screen.dart';
 class MainScaffold extends StatefulWidget {
   const MainScaffold({super.key});
 
+  /// Call [switchTo] from any screen to programmatically switch the active tab.
+  ///
+  /// ```dart
+  /// // e.g. from the redeem done button:
+  /// MainScaffold.switchTo(3); // Bookings tab
+  /// Navigator.of(context).popUntil((r) => r.isFirst);
+  /// ```
+  static void switchTo(int tabIndex) => _tabRequest.value = tabIndex;
+
+  static final ValueNotifier<int?> _tabRequest = ValueNotifier<int?>(null);
+
   @override
   State<MainScaffold> createState() => _MainScaffoldState();
 }
 
 class _MainScaffoldState extends State<MainScaffold> {
   int _currentIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    MainScaffold._tabRequest.addListener(_onTabRequest);
+  }
+
+  @override
+  void dispose() {
+    MainScaffold._tabRequest.removeListener(_onTabRequest);
+    super.dispose();
+  }
+
+  void _onTabRequest() {
+    final int? requested = MainScaffold._tabRequest.value;
+    if (requested != null && mounted) {
+      setState(() => _currentIndex = requested);
+      MainScaffold._tabRequest.value = null; // consume
+    }
+  }
 
   final List<Widget> _pages = const <Widget>[
     HomeScreen(),
