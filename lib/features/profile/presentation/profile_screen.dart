@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/di/repositories.dart';
 import '../../../core/localization/app_localizations.dart';
+import '../../../core/services/anonymous_user_service.dart';
 import '../../../core/settings/app_settings_controller.dart';
 import '../../../core/settings/app_settings_scope.dart';
+import '../../booking/data/repositories/local_booking_repository.dart';
 import 'controllers/profile_controller.dart';
 import 'controllers/profile_scope.dart';
 import 'screens/edit_profile_screen.dart';
@@ -10,24 +13,70 @@ import 'widgets/profile_menu_tile.dart';
 import 'widgets/profile_promo_banner.dart';
 import 'widgets/profile_stat_card.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  int _dealsCount = 0;
+  double _savingsEuros = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadStats();
+    LocalBookingRepository.version.addListener(_onVersionChange);
+  }
+
+  @override
+  void dispose() {
+    LocalBookingRepository.version.removeListener(_onVersionChange);
+    super.dispose();
+  }
+
+  void _onVersionChange() => _loadStats();
+
+  Future<void> _loadStats() async {
+    final String userId = await AnonymousUserService.ensureUserId();
+    final int count =
+        await Repositories.bookings.countRedeemed(userId: userId);
+    final double savings =
+        await Repositories.bookings.totalSavingsEuros(userId: userId);
+    if (mounted) {
+      setState(() {
+        _dealsCount = count;
+        _savingsEuros = savings;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     final AppLocalizations t = AppLocalizations.of(context);
     final AppSettingsController settings = AppSettingsScope.of(context);
-    final ProfileController profile = ProfileScope.of(context);
 
+    final String savingsLabel = _savingsEuros == 0
+        ? '0 €'
+        : _savingsEuros == _savingsEuros.truncateToDouble()
+            ? '${_savingsEuros.toInt()} €'
+            : '${_savingsEuros.toStringAsFixed(0)} €';
+    final ProfileController profile = ProfileScope.of(context);
     final List<({IconData icon, String value, String label})> stats =
         <({IconData icon, String value, String label})>[
           (icon: Icons.favorite_rounded, value: '2', label: t.favorites),
           (
             icon: Icons.account_balance_wallet_rounded,
-            value: '10 €',
+            value: savingsLabel,
             label: t.savings,
           ),
-          (icon: Icons.local_offer_rounded, value: '1', label: t.deals),
+          (
+            icon: Icons.local_offer_rounded,
+            value: '$_dealsCount',
+            label: t.deals,
+          ),
           (icon: Icons.emoji_events_rounded, value: '0', label: t.level),
           (icon: Icons.storefront_rounded, value: '12', label: t.restaurants),
           (icon: Icons.location_city_rounded, value: '3', label: t.cities),
