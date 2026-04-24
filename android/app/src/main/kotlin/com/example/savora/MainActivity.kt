@@ -1,4 +1,4 @@
-package com.example.savora
+package com.yerbolat.savora
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -47,3 +47,5 @@ app.*.map.json
 .env
 /chat
 chat/
+assets/images/
+lib/config

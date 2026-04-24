@@ -33,19 +33,13 @@ class LocalBookingRepository implements BookingRepository {
 
   Future<List<Map<String, dynamic>>> _readAll() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    final List<String> raw =
-        prefs.getStringList(_prefKey) ?? <String>[];
-    return raw
-        .map((s) => jsonDecode(s) as Map<String, dynamic>)
-        .toList();
+    final List<String> raw = prefs.getStringList(_prefKey) ?? <String>[];
+    return raw.map((s) => jsonDecode(s) as Map<String, dynamic>).toList();
   }
 
   Future<void> _writeAll(List<Map<String, dynamic>> records) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setStringList(
-      _prefKey,
-      records.map(jsonEncode).toList(),
-    );
+    await prefs.setStringList(_prefKey, records.map(jsonEncode).toList());
   }
 
   // ── BookingRepository ────────────────────────────────────────────────────
@@ -89,8 +83,9 @@ class LocalBookingRepository implements BookingRepository {
     double total = 0.0;
     // Parse labels like "~14 €", "~8 €", "€30" etc.
     for (final Booking b in all) {
-      final RegExpMatch? match =
-          RegExp(r'(\d+(?:\.\d+)?)').firstMatch(b.dealSavingsLabel);
+      final RegExpMatch? match = RegExp(
+        r'(\d+(?:\.\d+)?)',
+      ).firstMatch(b.dealSavingsLabel);
       if (match != null) {
         total += double.tryParse(match.group(0)!) ?? 0.0;
       }

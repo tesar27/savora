@@ -54,10 +54,7 @@ class EateryDealCard extends StatelessWidget {
                 icon: Icons.sync_rounded,
                 label: '${deal.validityDays} days',
               ),
-              _DealChip(
-                icon: Icons.place_outlined,
-                label: deal.locationType,
-              ),
+              _DealChip(icon: Icons.place_outlined, label: deal.locationType),
             ],
           ),
           const SizedBox(height: 10),

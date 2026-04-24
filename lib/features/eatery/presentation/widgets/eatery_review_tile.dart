@@ -51,14 +51,15 @@ class EateryReviewTile extends StatelessWidget {
                       children: <Widget>[
                         ...List<Widget>.generate(5, (int i) {
                           final bool filled = i < review.rating.floor();
-                          final bool half = i == review.rating.floor() &&
+                          final bool half =
+                              i == review.rating.floor() &&
                               review.rating % 1 >= 0.5;
                           return Icon(
                             half
                                 ? Icons.star_half_rounded
                                 : filled
-                                    ? Icons.star_rounded
-                                    : Icons.star_outline_rounded,
+                                ? Icons.star_rounded
+                                : Icons.star_outline_rounded,
                             color: const Color(0xFF42D88A),
                             size: 16,
                           );

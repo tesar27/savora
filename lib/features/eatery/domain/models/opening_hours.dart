@@ -1,10 +1,6 @@
 /// Opening-hours entry for one day of the week.
 class OpeningHours {
-  const OpeningHours({
-    required this.day,
-    this.open,
-    this.close,
-  });
+  const OpeningHours({required this.day, this.open, this.close});
 
   /// Day name, e.g. "Monday".
   final String day;

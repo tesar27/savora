@@ -29,12 +29,12 @@ class EateryCard extends StatelessWidget {
                     Image.network(
                       item.imageUrl,
                       fit: BoxFit.cover,
-                      errorBuilder: (
-                        BuildContext context,
-                        Object error,
-                        StackTrace? stack,
-                      ) =>
-                          Container(
+                      errorBuilder:
+                          (
+                            BuildContext context,
+                            Object error,
+                            StackTrace? stack,
+                          ) => Container(
                             color: const Color(0xFFECECEC),
                             alignment: Alignment.center,
                             child: const Icon(
@@ -89,8 +89,9 @@ class EateryCard extends StatelessWidget {
                               ),
                               const SizedBox(width: 4),
                               ConstrainedBox(
-                                constraints:
-                                    const BoxConstraints(maxWidth: 118),
+                                constraints: const BoxConstraints(
+                                  maxWidth: 118,
+                                ),
                                 child: Text(
                                   item.redeemedText!,
                                   maxLines: 1,

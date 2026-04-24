@@ -32,27 +32,112 @@ class MockEateryRepository implements EateryRepository {
   ];
 
   static const List<EateryReview> _italianReviews = <EateryReview>[
-    EateryReview(id: 'r-it-1', reviewerName: 'Berfin', rating: 5.0, timeAgo: '1 day ago', comment: 'Best pasta I have ever had – the 2-for-1 deal is incredible value!'),
-    EateryReview(id: 'r-it-2', reviewerName: 'Sandra', rating: 2.0, timeAgo: '1 day ago'),
-    EateryReview(id: 'r-it-3', reviewerName: 'Lütfiye', rating: 5.0, timeAgo: '2 days ago', comment: 'Cozy atmosphere and very friendly staff.'),
-    EateryReview(id: 'r-it-4', reviewerName: 'Achsah', rating: 5.0, timeAgo: '6 days ago'),
-    EateryReview(id: 'r-it-5', reviewerName: 'Foivos', rating: 4.0, timeAgo: '1 week ago', comment: 'Solid deal, would recommend to friends visiting Freiburg.'),
+    EateryReview(
+      id: 'r-it-1',
+      reviewerName: 'Berfin',
+      rating: 5.0,
+      timeAgo: '1 day ago',
+      comment:
+          'Best pasta I have ever had – the 2-for-1 deal is incredible value!',
+    ),
+    EateryReview(
+      id: 'r-it-2',
+      reviewerName: 'Sandra',
+      rating: 2.0,
+      timeAgo: '1 day ago',
+    ),
+    EateryReview(
+      id: 'r-it-3',
+      reviewerName: 'Lütfiye',
+      rating: 5.0,
+      timeAgo: '2 days ago',
+      comment: 'Cozy atmosphere and very friendly staff.',
+    ),
+    EateryReview(
+      id: 'r-it-4',
+      reviewerName: 'Achsah',
+      rating: 5.0,
+      timeAgo: '6 days ago',
+    ),
+    EateryReview(
+      id: 'r-it-5',
+      reviewerName: 'Foivos',
+      rating: 4.0,
+      timeAgo: '1 week ago',
+      comment: 'Solid deal, would recommend to friends visiting Freiburg.',
+    ),
   ];
 
   static const List<EateryReview> _burgerReviews = <EateryReview>[
-    EateryReview(id: 'r-bg-1', reviewerName: 'Marco', rating: 5.0, timeAgo: '2 days ago', comment: 'Juicy burgers and generous portions, the deal is a steal!'),
-    EateryReview(id: 'r-bg-2', reviewerName: 'Elena', rating: 4.0, timeAgo: '3 days ago'),
-    EateryReview(id: 'r-bg-3', reviewerName: 'Tomas', rating: 5.0, timeAgo: '1 week ago', comment: 'Came twice already using the Savora deal.'),
-    EateryReview(id: 'r-bg-4', reviewerName: 'Hannah', rating: 3.0, timeAgo: '2 weeks ago'),
-    EateryReview(id: 'r-bg-5', reviewerName: 'Yusuf', rating: 5.0, timeAgo: '3 weeks ago', comment: 'Worth every cent.'),
+    EateryReview(
+      id: 'r-bg-1',
+      reviewerName: 'Marco',
+      rating: 5.0,
+      timeAgo: '2 days ago',
+      comment: 'Juicy burgers and generous portions, the deal is a steal!',
+    ),
+    EateryReview(
+      id: 'r-bg-2',
+      reviewerName: 'Elena',
+      rating: 4.0,
+      timeAgo: '3 days ago',
+    ),
+    EateryReview(
+      id: 'r-bg-3',
+      reviewerName: 'Tomas',
+      rating: 5.0,
+      timeAgo: '1 week ago',
+      comment: 'Came twice already using the Savora deal.',
+    ),
+    EateryReview(
+      id: 'r-bg-4',
+      reviewerName: 'Hannah',
+      rating: 3.0,
+      timeAgo: '2 weeks ago',
+    ),
+    EateryReview(
+      id: 'r-bg-5',
+      reviewerName: 'Yusuf',
+      rating: 5.0,
+      timeAgo: '3 weeks ago',
+      comment: 'Worth every cent.',
+    ),
   ];
 
   static const List<EateryReview> _cafeReviews = <EateryReview>[
-    EateryReview(id: 'r-cf-1', reviewerName: 'Priya', rating: 5.0, timeAgo: '1 day ago', comment: 'The cake selection is divine and the 2-for-1 deal is perfect for dates!'),
-    EateryReview(id: 'r-cf-2', reviewerName: 'Lars', rating: 4.0, timeAgo: '4 days ago'),
-    EateryReview(id: 'r-cf-3', reviewerName: 'Mia', rating: 5.0, timeAgo: '1 week ago'),
-    EateryReview(id: 'r-cf-4', reviewerName: 'David', rating: 5.0, timeAgo: '2 weeks ago', comment: 'Relaxed vibe, great coffee. Highly recommend.'),
-    EateryReview(id: 'r-cf-5', reviewerName: 'Sofie', rating: 4.0, timeAgo: '3 weeks ago'),
+    EateryReview(
+      id: 'r-cf-1',
+      reviewerName: 'Priya',
+      rating: 5.0,
+      timeAgo: '1 day ago',
+      comment:
+          'The cake selection is divine and the 2-for-1 deal is perfect for dates!',
+    ),
+    EateryReview(
+      id: 'r-cf-2',
+      reviewerName: 'Lars',
+      rating: 4.0,
+      timeAgo: '4 days ago',
+    ),
+    EateryReview(
+      id: 'r-cf-3',
+      reviewerName: 'Mia',
+      rating: 5.0,
+      timeAgo: '1 week ago',
+    ),
+    EateryReview(
+      id: 'r-cf-4',
+      reviewerName: 'David',
+      rating: 5.0,
+      timeAgo: '2 weeks ago',
+      comment: 'Relaxed vibe, great coffee. Highly recommend.',
+    ),
+    EateryReview(
+      id: 'r-cf-5',
+      reviewerName: 'Sofie',
+      rating: 4.0,
+      timeAgo: '3 weeks ago',
+    ),
   ];
 
   // ─── Eatery catalogue ───────────────────────────────────────────────────────
@@ -66,7 +151,8 @@ class MockEateryRepository implements EateryRepository {
       ratingCount: 1240,
       reviewCount: 320,
       distance: '70 km',
-      imageUrl: 'https://images.pexels.com/photos/5938/food-salad-healthy-lunch.jpg?auto=compress&cs=tinysrgb&w=1200',
+      imageUrl:
+          'https://images.pexels.com/photos/5938/food-salad-healthy-lunch.jpg?auto=compress&cs=tinysrgb&w=1200',
       address: 'Hauptstraße 12, Freiburg',
       city: 'Freiburg',
       phone: '+49 761 123 4567',
@@ -78,7 +164,8 @@ class MockEateryRepository implements EateryRepository {
           savingsLabel: '~8 €',
           validityDays: 30,
           locationType: 'In-store',
-          description: 'Order 2 cakes of your choice – the cheaper or equally priced one is complimentary. Show this deal before ordering.',
+          description:
+              'Order 2 cakes of your choice – the cheaper or equally priced one is complimentary. Show this deal before ordering.',
         ),
         EateryDeal(
           id: 'fino-d2',
@@ -86,7 +173,8 @@ class MockEateryRepository implements EateryRepository {
           savingsLabel: '~12 €',
           validityDays: 14,
           locationType: 'In-store',
-          description: 'Order 2 glasses of wine and the cheaper or equal one is on the house. Must be presented to staff before ordering.',
+          description:
+              'Order 2 glasses of wine and the cheaper or equal one is on the house. Must be presented to staff before ordering.',
         ),
       ],
       reviews: _cafeReviews,
@@ -101,7 +189,8 @@ class MockEateryRepository implements EateryRepository {
       ratingCount: 980,
       reviewCount: 234,
       distance: '71 km',
-      imageUrl: 'https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      imageUrl:
+          'https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&w=1200',
       address: 'Bertoldstraße 5, Freiburg',
       city: 'Freiburg',
       phone: '+49 761 987 6543',
@@ -113,7 +202,8 @@ class MockEateryRepository implements EateryRepository {
           savingsLabel: '~14 €',
           validityDays: 30,
           locationType: 'In-store',
-          description: 'Order 2 main dishes from our menu – the cheaper or equally priced one is free. Show the deal before ordering.',
+          description:
+              'Order 2 main dishes from our menu – the cheaper or equally priced one is free. Show the deal before ordering.',
         ),
       ],
       reviews: _burgerReviews,
@@ -128,7 +218,8 @@ class MockEateryRepository implements EateryRepository {
       ratingCount: 1785,
       reviewCount: 394,
       distance: '71 km',
-      imageUrl: 'https://images.pexels.com/photos/2619967/pexels-photo-2619967.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      imageUrl:
+          'https://images.pexels.com/photos/2619967/pexels-photo-2619967.jpeg?auto=compress&cs=tinysrgb&w=1200',
       address: 'Rempartstraße 4, Freiburg im Breisgau',
       city: 'Freiburg',
       phone: '+49 761 744 075',
@@ -141,7 +232,8 @@ class MockEateryRepository implements EateryRepository {
           savingsLabel: '~14 €',
           validityDays: 30,
           locationType: 'In-store',
-          description: 'Order 2 salads or pasta dishes of your choice – the cheaper/equally priced is not charged. Must be shown before ordering.',
+          description:
+              'Order 2 salads or pasta dishes of your choice – the cheaper/equally priced is not charged. Must be shown before ordering.',
         ),
         EateryDeal(
           id: 'lost-d2',
@@ -149,7 +241,8 @@ class MockEateryRepository implements EateryRepository {
           savingsLabel: '~7 €',
           validityDays: 6,
           locationType: 'In-store',
-          description: 'Order 2 aperitifs of your choice – the cheaper/equally priced one is complimentary. Show this before ordering.',
+          description:
+              'Order 2 aperitifs of your choice – the cheaper/equally priced one is complimentary. Show this before ordering.',
         ),
       ],
       reviews: _italianReviews,
@@ -164,7 +257,8 @@ class MockEateryRepository implements EateryRepository {
       ratingCount: 1560,
       reviewCount: 312,
       distance: '71 km',
-      imageUrl: 'https://images.pexels.com/photos/4958792/pexels-photo-4958792.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      imageUrl:
+          'https://images.pexels.com/photos/4958792/pexels-photo-4958792.jpeg?auto=compress&cs=tinysrgb&w=1200',
       address: 'Kaiser-Joseph-Straße 175, Freiburg',
       city: 'Freiburg',
       phone: '+49 761 202 9190',
@@ -177,7 +271,8 @@ class MockEateryRepository implements EateryRepository {
           savingsLabel: '~16 €',
           validityDays: 30,
           locationType: 'In-store',
-          description: 'Order any 2 main dishes from our dinner menu – the cheaper one is on us. Present deal before ordering.',
+          description:
+              'Order any 2 main dishes from our dinner menu – the cheaper one is on us. Present deal before ordering.',
         ),
       ],
       reviews: _burgerReviews,
@@ -192,7 +287,8 @@ class MockEateryRepository implements EateryRepository {
       ratingCount: 870,
       reviewCount: 180,
       distance: '18 km',
-      imageUrl: 'https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      imageUrl:
+          'https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1200',
       address: 'Münsterplatz 8, Freiburg',
       city: 'Freiburg',
       phone: '+49 761 555 1234',
@@ -204,7 +300,8 @@ class MockEateryRepository implements EateryRepository {
           savingsLabel: '~18 €',
           validityDays: 30,
           locationType: 'In-store',
-          description: 'Order 2 family-size pizzas from our menu and the less expensive one is complimentary. Show before ordering.',
+          description:
+              'Order 2 family-size pizzas from our menu and the less expensive one is complimentary. Show before ordering.',
         ),
       ],
       reviews: _italianReviews,
@@ -219,7 +316,8 @@ class MockEateryRepository implements EateryRepository {
       ratingCount: 720,
       reviewCount: 155,
       distance: '23 km',
-      imageUrl: 'https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      imageUrl:
+          'https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg?auto=compress&cs=tinysrgb&w=1200',
       address: 'Wilhelmstraße 9, Freiburg',
       city: 'Freiburg',
       phone: '+49 761 321 6789',
@@ -231,7 +329,8 @@ class MockEateryRepository implements EateryRepository {
           savingsLabel: '~14 €',
           validityDays: 30,
           locationType: 'In-store',
-          description: 'Order any 2 burgers from our grill menu – the cheaper one is on the house. Must be shown before ordering.',
+          description:
+              'Order any 2 burgers from our grill menu – the cheaper one is on the house. Must be shown before ordering.',
         ),
       ],
       reviews: _burgerReviews,
@@ -246,7 +345,8 @@ class MockEateryRepository implements EateryRepository {
       ratingCount: 1100,
       reviewCount: 270,
       distance: '11 km',
-      imageUrl: 'https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      imageUrl:
+          'https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=1200',
       address: 'Schillerstraße 3, Basel',
       city: 'Basel',
       phone: '+41 61 270 1234',
@@ -258,7 +358,8 @@ class MockEateryRepository implements EateryRepository {
           savingsLabel: '~45 €',
           validityDays: 14,
           locationType: 'In-store',
-          description: 'Reserve a table for 2 and enjoy the tasting menu – the second menu is complimentary. Book at least 24 h in advance.',
+          description:
+              'Reserve a table for 2 and enjoy the tasting menu – the second menu is complimentary. Book at least 24 h in advance.',
         ),
       ],
       reviews: _italianReviews,
@@ -273,7 +374,8 @@ class MockEateryRepository implements EateryRepository {
       ratingCount: 950,
       reviewCount: 220,
       distance: '15 km',
-      imageUrl: 'https://images.pexels.com/photos/2233729/pexels-photo-2233729.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      imageUrl:
+          'https://images.pexels.com/photos/2233729/pexels-photo-2233729.jpeg?auto=compress&cs=tinysrgb&w=1200',
       address: 'Rheinufer 7, Basel',
       city: 'Basel',
       phone: '+41 61 388 9900',
@@ -285,7 +387,8 @@ class MockEateryRepository implements EateryRepository {
           savingsLabel: '~32 €',
           validityDays: 7,
           locationType: 'In-store',
-          description: 'Order 2 of today\'s chef special – the lower-priced one is complimentary. Must be shown to staff before the meal.',
+          description:
+              'Order 2 of today\'s chef special – the lower-priced one is complimentary. Must be shown to staff before the meal.',
         ),
       ],
       reviews: _italianReviews,
@@ -300,7 +403,8 @@ class MockEateryRepository implements EateryRepository {
       ratingCount: 640,
       reviewCount: 130,
       distance: '8 km',
-      imageUrl: 'https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      imageUrl:
+          'https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=1200',
       address: 'Leopoldstraße 22, Zurich',
       city: 'Zurich',
       phone: '+41 44 211 5500',
@@ -312,7 +416,8 @@ class MockEateryRepository implements EateryRepository {
           savingsLabel: '~18 €',
           validityDays: 30,
           locationType: 'In-store',
-          description: 'Order 2 brunch combos (drink + main + pastry) – the lower-priced combo is on us. Offer valid until 14:00.',
+          description:
+              'Order 2 brunch combos (drink + main + pastry) – the lower-priced combo is on us. Offer valid until 14:00.',
         ),
       ],
       reviews: _cafeReviews,
@@ -327,7 +432,8 @@ class MockEateryRepository implements EateryRepository {
       ratingCount: 780,
       reviewCount: 160,
       distance: '9 km',
-      imageUrl: 'https://images.pexels.com/photos/1410235/pexels-photo-1410235.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      imageUrl:
+          'https://images.pexels.com/photos/1410235/pexels-photo-1410235.jpeg?auto=compress&cs=tinysrgb&w=1200',
       address: 'Langstraße 44, Zurich',
       city: 'Zurich',
       phone: '+41 44 400 7788',
@@ -339,7 +445,8 @@ class MockEateryRepository implements EateryRepository {
           savingsLabel: '~16 €',
           validityDays: 30,
           locationType: 'In-store',
-          description: 'Order 2 ramen bowls of your choice – the cheaper bowl is complimentary. Show deal before ordering.',
+          description:
+              'Order 2 ramen bowls of your choice – the cheaper bowl is complimentary. Show deal before ordering.',
         ),
       ],
       reviews: _burgerReviews,
@@ -354,7 +461,8 @@ class MockEateryRepository implements EateryRepository {
       ratingCount: 860,
       reviewCount: 195,
       distance: '12 km',
-      imageUrl: 'https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      imageUrl:
+          'https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=1200',
       address: 'Ankerstraße 9, Zurich',
       city: 'Zurich',
       phone: '+41 44 520 3344',
@@ -366,7 +474,8 @@ class MockEateryRepository implements EateryRepository {
           savingsLabel: '~13 €',
           validityDays: 30,
           locationType: 'In-store',
-          description: 'Order 2 noodle set menus – the equivalent or lower-priced one is on us. Must present before ordering.',
+          description:
+              'Order 2 noodle set menus – the equivalent or lower-priced one is on us. Must present before ordering.',
         ),
       ],
       reviews: _burgerReviews,
@@ -381,7 +490,8 @@ class MockEateryRepository implements EateryRepository {
       ratingCount: 1200,
       reviewCount: 260,
       distance: '17 km',
-      imageUrl: 'https://images.pexels.com/photos/725991/pexels-photo-725991.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      imageUrl:
+          'https://images.pexels.com/photos/725991/pexels-photo-725991.jpeg?auto=compress&cs=tinysrgb&w=1200',
       address: 'Oetenbachgasse 14, Zurich',
       city: 'Zurich',
       phone: '+41 44 211 0011',
@@ -393,7 +503,8 @@ class MockEateryRepository implements EateryRepository {
           savingsLabel: '~14 €',
           validityDays: 30,
           locationType: 'In-store',
-          description: 'Order 2 pasta plates of your choice – the cheaper or equally priced one is complimentary. Show before ordering.',
+          description:
+              'Order 2 pasta plates of your choice – the cheaper or equally priced one is complimentary. Show before ordering.',
         ),
       ],
       reviews: _italianReviews,
@@ -408,7 +519,8 @@ class MockEateryRepository implements EateryRepository {
       ratingCount: 700,
       reviewCount: 145,
       distance: '10 km',
-      imageUrl: 'https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      imageUrl:
+          'https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&w=1200',
       address: 'Feldbergstraße 18, Basel',
       city: 'Basel',
       phone: '+41 61 333 5566',
@@ -420,7 +532,8 @@ class MockEateryRepository implements EateryRepository {
           savingsLabel: '~13 €',
           validityDays: 30,
           locationType: 'In-store',
-          description: 'Order 2 Margherita pizzas and the second one is on us. Deal must be shown to staff before ordering.',
+          description:
+              'Order 2 Margherita pizzas and the second one is on us. Deal must be shown to staff before ordering.',
         ),
       ],
       reviews: _italianReviews,
@@ -435,7 +548,8 @@ class MockEateryRepository implements EateryRepository {
       ratingCount: 980,
       reviewCount: 210,
       distance: '16 km',
-      imageUrl: 'https://images.pexels.com/photos/4109074/pexels-photo-4109074.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      imageUrl:
+          'https://images.pexels.com/photos/4109074/pexels-photo-4109074.jpeg?auto=compress&cs=tinysrgb&w=1200',
       address: 'Steinenvorstadt 25, Basel',
       city: 'Basel',
       phone: '+41 61 272 4488',
@@ -447,7 +561,8 @@ class MockEateryRepository implements EateryRepository {
           savingsLabel: '~12 €',
           validityDays: 30,
           locationType: 'In-store',
-          description: 'Order 2 wood-fired pizza slices of your choice – the cheaper or equal one is free. Present before ordering.',
+          description:
+              'Order 2 wood-fired pizza slices of your choice – the cheaper or equal one is free. Present before ordering.',
         ),
       ],
       reviews: _italianReviews,
@@ -477,8 +592,10 @@ class MockEateryRepository implements EateryRepository {
 
     if (category != null) {
       results = results
-          .where((Eatery e) =>
-              e.category.toLowerCase().contains(category.toLowerCase()))
+          .where(
+            (Eatery e) =>
+                e.category.toLowerCase().contains(category.toLowerCase()),
+          )
           .toList();
     }
 

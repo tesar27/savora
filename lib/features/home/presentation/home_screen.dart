@@ -514,8 +514,7 @@ class _HomeViewState extends State<_HomeView> {
                                 (BuildContext context, int index) =>
                                     const SizedBox(width: 16),
                             itemBuilder: (BuildContext context, int index) {
-                              final EateryCardModel item =
-                                  section.items[index];
+                              final EateryCardModel item = section.items[index];
                               return EateryCard(
                                 item: item,
                                 onTap: () => _onEateryTap(item.id),

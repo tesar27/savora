@@ -41,10 +41,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Future<void> _loadStats() async {
     final String userId = await AnonymousUserService.ensureUserId();
-    final int count =
-        await Repositories.bookings.countRedeemed(userId: userId);
-    final double savings =
-        await Repositories.bookings.totalSavingsEuros(userId: userId);
+    final int count = await Repositories.bookings.countRedeemed(userId: userId);
+    final double savings = await Repositories.bookings.totalSavingsEuros(
+      userId: userId,
+    );
     if (mounted) {
       setState(() {
         _dealsCount = count;
@@ -61,32 +61,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final String savingsLabel = _savingsEuros == 0
         ? '0 €'
         : _savingsEuros == _savingsEuros.truncateToDouble()
-            ? '${_savingsEuros.toInt()} €'
-            : '${_savingsEuros.toStringAsFixed(0)} €';
+        ? '${_savingsEuros.toInt()} €'
+        : '${_savingsEuros.toStringAsFixed(0)} €';
     final ProfileController profile = ProfileScope.of(context);
-    final List<({IconData icon, String value, String label})> stats =
-        <({IconData icon, String value, String label})>[
-          (icon: Icons.favorite_rounded, value: '2', label: t.favorites),
-          (
-            icon: Icons.account_balance_wallet_rounded,
-            value: savingsLabel,
-            label: t.savings,
-          ),
-          (
-            icon: Icons.local_offer_rounded,
-            value: '$_dealsCount',
-            label: t.deals,
-          ),
-          (icon: Icons.emoji_events_rounded, value: '0', label: t.level),
-          (icon: Icons.storefront_rounded, value: '12', label: t.restaurants),
-          (icon: Icons.location_city_rounded, value: '3', label: t.cities),
-          (icon: Icons.star_rounded, value: '4.8', label: t.rating),
-          (
-            icon: Icons.chat_bubble_outline_rounded,
-            value: '7',
-            label: t.reviews,
-          ),
-        ];
+    final List<({IconData icon, String value, String label})>
+    stats = <({IconData icon, String value, String label})>[
+      (icon: Icons.favorite_rounded, value: '2', label: t.favorites),
+      (
+        icon: Icons.account_balance_wallet_rounded,
+        value: savingsLabel,
+        label: t.savings,
+      ),
+      (icon: Icons.local_offer_rounded, value: '$_dealsCount', label: t.deals),
+      (icon: Icons.emoji_events_rounded, value: '0', label: t.level),
+      (icon: Icons.storefront_rounded, value: '12', label: t.restaurants),
+      (icon: Icons.location_city_rounded, value: '3', label: t.cities),
+      (icon: Icons.star_rounded, value: '4.8', label: t.rating),
+      (icon: Icons.chat_bubble_outline_rounded, value: '7', label: t.reviews),
+    ];
 
     return Scaffold(
       body: SafeArea(

@@ -298,10 +298,8 @@ class _ContentSheet extends StatelessWidget {
                 deal: deal,
                 onRedeem: () => Navigator.of(context).push(
                   MaterialPageRoute<void>(
-                    builder: (_) => RedeemRatingScreen(
-                      eatery: eatery,
-                      deal: deal,
-                    ),
+                    builder: (_) =>
+                        RedeemRatingScreen(eatery: eatery, deal: deal),
                   ),
                 ),
               ),

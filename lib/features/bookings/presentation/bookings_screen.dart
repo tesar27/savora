@@ -34,8 +34,9 @@ class _BookingsScreenState extends State<BookingsScreen> {
 
   Future<void> _load() async {
     final String userId = await AnonymousUserService.ensureUserId();
-    final List<Booking> bookings =
-        await Repositories.bookings.findAll(userId: userId);
+    final List<Booking> bookings = await Repositories.bookings.findAll(
+      userId: userId,
+    );
     if (mounted) {
       setState(() {
         _bookings = bookings;
@@ -77,15 +78,15 @@ class _BookingsScreenState extends State<BookingsScreen> {
                       ),
                     )
                   : _bookings.isEmpty
-                      ? _EmptyState(tt: tt)
-                      : ListView.separated(
-                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 32),
-                          itemCount: _bookings.length,
-                          separatorBuilder: (BuildContext ctx, int i) =>
-                              const SizedBox(height: 16),
-                          itemBuilder: (BuildContext context, int index) =>
-                              _BookingCard(booking: _bookings[index]),
-                        ),
+                  ? _EmptyState(tt: tt)
+                  : ListView.separated(
+                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 32),
+                      itemCount: _bookings.length,
+                      separatorBuilder: (BuildContext ctx, int i) =>
+                          const SizedBox(height: 16),
+                      itemBuilder: (BuildContext context, int index) =>
+                          _BookingCard(booking: _bookings[index]),
+                    ),
             ),
           ],
         ),
@@ -172,17 +173,16 @@ class _BookingCard extends StatelessWidget {
             height: 160,
             width: double.infinity,
             fit: BoxFit.cover,
-            errorBuilder:
-                (BuildContext ctx, Object err, StackTrace? stack) =>
-                    Container(
-                      height: 160,
-                      color: const Color(0xFFECECEC),
-                      child: const Icon(
-                        Icons.restaurant_rounded,
-                        size: 48,
-                        color: Color(0xFF9A9A9A),
-                      ),
-                    ),
+            errorBuilder: (BuildContext ctx, Object err, StackTrace? stack) =>
+                Container(
+                  height: 160,
+                  color: const Color(0xFFECECEC),
+                  child: const Icon(
+                    Icons.restaurant_rounded,
+                    size: 48,
+                    color: Color(0xFF9A9A9A),
+                  ),
+                ),
           ),
 
           Padding(
@@ -201,9 +201,7 @@ class _BookingCard extends StatelessWidget {
                 const SizedBox(height: 2),
                 Text(
                   booking.eateryCategory,
-                  style: tt.bodySmall?.copyWith(
-                    color: const Color(0xFF8A8F9E),
-                  ),
+                  style: tt.bodySmall?.copyWith(color: const Color(0xFF8A8F9E)),
                 ),
 
                 const SizedBox(height: 12),
@@ -259,8 +257,7 @@ class _BookingCard extends StatelessWidget {
                   const SizedBox(height: 6),
                   Row(
                     children: List<Widget>.generate(5, (int i) {
-                      final bool filled =
-                          i < (booking.userRating ?? 0).round();
+                      final bool filled = i < (booking.userRating ?? 0).round();
                       return Icon(
                         filled
                             ? Icons.star_rounded
@@ -329,4 +326,3 @@ class _Chip extends StatelessWidget {
     );
   }
 }
-

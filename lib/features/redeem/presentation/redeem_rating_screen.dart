@@ -109,7 +109,9 @@ class _RedeemRatingScreenState extends State<RedeemRatingScreen> {
                 Text(
                   'Your honest feedback helps others discover great deals.',
                   textAlign: TextAlign.center,
-                  style: tt.bodyMedium?.copyWith(color: const Color(0xFF8A8F9E)),
+                  style: tt.bodyMedium?.copyWith(
+                    color: const Color(0xFF8A8F9E),
+                  ),
                 ),
 
                 const SizedBox(height: 36),
@@ -125,8 +127,9 @@ class _RedeemRatingScreenState extends State<RedeemRatingScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 7),
                         child: AnimatedSwitcher(
                           duration: const Duration(milliseconds: 180),
-                          transitionBuilder: (Widget child, Animation<double> anim) =>
-                              ScaleTransition(scale: anim, child: child),
+                          transitionBuilder:
+                              (Widget child, Animation<double> anim) =>
+                                  ScaleTransition(scale: anim, child: child),
                           child: Icon(
                             filled
                                 ? Icons.star_rounded
@@ -232,17 +235,16 @@ class _EateryMiniCard extends StatelessWidget {
               width: 88,
               height: 88,
               fit: BoxFit.cover,
-              errorBuilder:
-                  (BuildContext ctx, Object err, StackTrace? stack) =>
-                      Container(
-                        width: 88,
-                        height: 88,
-                        color: const Color(0xFFE0E0E0),
-                        child: const Icon(
-                          Icons.restaurant_rounded,
-                          color: Color(0xFF9A9A9A),
-                        ),
-                      ),
+              errorBuilder: (BuildContext ctx, Object err, StackTrace? stack) =>
+                  Container(
+                    width: 88,
+                    height: 88,
+                    color: const Color(0xFFE0E0E0),
+                    child: const Icon(
+                      Icons.restaurant_rounded,
+                      color: Color(0xFF9A9A9A),
+                    ),
+                  ),
             ),
           ),
 

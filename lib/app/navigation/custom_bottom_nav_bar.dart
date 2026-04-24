@@ -80,7 +80,7 @@ class CustomBottomNavBar extends StatelessWidget {
                               color: isSelected
                                   ? AppColors.textPrimary
                                   : AppColors.textSecondary,
-                              size: 20,
+                              size: 24,
                             ),
                             AnimatedSize(
                               duration: const Duration(milliseconds: 250),

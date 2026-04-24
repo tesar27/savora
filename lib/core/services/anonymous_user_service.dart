@@ -34,8 +34,7 @@ abstract final class AnonymousUserService {
 
   static String _uuidV4() {
     final Random rng = Random.secure();
-    final List<int> bytes =
-        List<int>.generate(16, (_) => rng.nextInt(256));
+    final List<int> bytes = List<int>.generate(16, (_) => rng.nextInt(256));
 
     // Set version bits (version 4)
     bytes[6] = (bytes[6] & 0x0f) | 0x40;

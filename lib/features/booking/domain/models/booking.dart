@@ -62,32 +62,32 @@ class Booking {
   // ── Serialisation (used by LocalBookingRepository / Supabase DTO) ─────────
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'userId': userId,
-        'eateryId': eateryId,
-        'eateryName': eateryName,
-        'eateryImageUrl': eateryImageUrl,
-        'eateryCategory': eateryCategory,
-        'dealId': dealId,
-        'dealTitle': dealTitle,
-        'dealSavingsLabel': dealSavingsLabel,
-        'redeemedAt': redeemedAt.toUtc().toIso8601String(),
-        'userRating': userRating,
-        'userComment': userComment,
-      };
+    'id': id,
+    'userId': userId,
+    'eateryId': eateryId,
+    'eateryName': eateryName,
+    'eateryImageUrl': eateryImageUrl,
+    'eateryCategory': eateryCategory,
+    'dealId': dealId,
+    'dealTitle': dealTitle,
+    'dealSavingsLabel': dealSavingsLabel,
+    'redeemedAt': redeemedAt.toUtc().toIso8601String(),
+    'userRating': userRating,
+    'userComment': userComment,
+  };
 
   factory Booking.fromJson(Map<String, dynamic> json) => Booking(
-        id: json['id'] as String,
-        userId: json['userId'] as String,
-        eateryId: json['eateryId'] as String,
-        eateryName: json['eateryName'] as String,
-        eateryImageUrl: json['eateryImageUrl'] as String,
-        eateryCategory: json['eateryCategory'] as String,
-        dealId: json['dealId'] as String,
-        dealTitle: json['dealTitle'] as String,
-        dealSavingsLabel: json['dealSavingsLabel'] as String,
-        redeemedAt: DateTime.parse(json['redeemedAt'] as String),
-        userRating: (json['userRating'] as num?)?.toDouble(),
-        userComment: json['userComment'] as String?,
-      );
+    id: json['id'] as String,
+    userId: json['userId'] as String,
+    eateryId: json['eateryId'] as String,
+    eateryName: json['eateryName'] as String,
+    eateryImageUrl: json['eateryImageUrl'] as String,
+    eateryCategory: json['eateryCategory'] as String,
+    dealId: json['dealId'] as String,
+    dealTitle: json['dealTitle'] as String,
+    dealSavingsLabel: json['dealSavingsLabel'] as String,
+    redeemedAt: DateTime.parse(json['redeemedAt'] as String),
+    userRating: (json['userRating'] as num?)?.toDouble(),
+    userComment: json['userComment'] as String?,
+  );
 }
